@@ -2,6 +2,7 @@ package com.orcas.client;
 
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
+import com.orcas.constant.JdVopApiConstant;
 import com.orcas.model.Result;
 import com.orcas.model.request.SkuRequest;
 import com.orcas.model.request.product.*;
@@ -192,5 +193,20 @@ public class ProductClient extends SignClient {
         getUrl() + "getBatchIsCod",
         request,
         new TypeReference<Result<Map<String, ProductHdfk>>>() {});
+  }
+
+  /**
+   * 搜索商品
+   *
+   * @param request
+   * @return
+   */
+  public ProductPageSearchResponse searchProductByPage(ProductPageSearchRequest request) {
+    Assert.isNotNull(request, "搜索商品参数");
+    request.validate();
+    return post(
+        JdVopApiConstant.MAIN_NET_URL + "api/search/search",
+        request,
+        new TypeReference<Result<ProductPageSearchResponse>>() {});
   }
 }
