@@ -111,4 +111,8 @@ public class ProductClient extends SignClient {
     request.validate();
     return post(getUrl() + "skuState", request, new TypeReference<Result<List<ProductState>>>() {});
   }
+
+  public void productCheck(){
+
+  }
 }

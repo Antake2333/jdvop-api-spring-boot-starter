@@ -33,7 +33,7 @@ public class TokenStore {
   @Autowired private TokenClient tokenClient;
 
   /** 初始化token */
-  private Token initToken() {
+  public Token initToken() {
     JdVopProperties jdVopProperties = tokenClient.getJdVopProperties();
     Token token =
         tokenClient.getAccessToken(

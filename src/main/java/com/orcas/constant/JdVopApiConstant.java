@@ -9,4 +9,5 @@ public class JdVopApiConstant {
   public static final String MAIN_NET_URL = "https://bizapi.jd.com/";
   public static final String TOKEN = "token";
   public static final String SUCCESS = "success";
+  public static final String TOKEN_EXPIRE_CODE = "2007";
 }

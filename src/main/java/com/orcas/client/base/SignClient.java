@@ -52,6 +52,12 @@ public abstract class SignClient extends BaseClient {
       // 判断结果是否是成功
       if (Objects.isNull(execute) || !execute.getSuccess()) {
         log.error("POST请求正确,但是返回结果不正确,结果为:{}", execute);
+        if (Objects.nonNull(execute)
+            && JdVopApiConstant.TOKEN_EXPIRE_CODE.equals(execute.getResultCode())) {
+          // 如果是TOKEN过期,手动触发token刷新
+          log.info("调用接口token过期,触发token自动刷新");
+          tokenStore.initToken();
+        }
         throw new JdVopApi4jException(
             JdVopApiError.JD_VOP_ERROR.getCode(),
             StringUtils.isNotBlank(execute.getResultMessage())
