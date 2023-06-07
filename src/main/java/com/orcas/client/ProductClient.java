@@ -289,4 +289,19 @@ public class ProductClient extends SignClient {
         request,
         new TypeReference<Result<ProductSaleStateAndStockCheckResponse>>() {});
   }
+
+  /**
+   * 查询商品售价
+   *
+   * @param request
+   * @return
+   */
+  public QueryProductSellPriceResponse queryProductSellPrice(QueryProductSellPriceRequest request) {
+    Assert.isNotNull(request, "商品售价查询参数");
+    request.validate();
+    return post(
+        JdVopApiConstant.MAIN_NET_URL + "api/price/getSellPrice",
+        request,
+        new TypeReference<Result<QueryProductSellPriceResponse>>() {});
+  }
 }
