@@ -273,4 +273,20 @@ public class ProductClient extends SignClient {
         .filter(Objects::nonNull)
         .collect(Collectors.toList());
   }
+
+  /**
+   * 商品检查
+   *
+   * @param request
+   * @return
+   */
+  public ProductSaleStateAndStockCheckResponse productSaleStateAndStockCheck(
+      ProductSaleStateAndStockCheckRequest request) {
+    Assert.isNotNull(request, "商品上下架状态和库存检查参数");
+    request.validate();
+    return post(
+        JdVopApiConstant.MAIN_NET_URL + "api/stock/checkSkuSaleStateAndStock",
+        request,
+        new TypeReference<Result<ProductSaleStateAndStockCheckResponse>>() {});
+  }
 }
