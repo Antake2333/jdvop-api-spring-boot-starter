@@ -209,4 +209,22 @@ public class ProductClient extends SignClient {
         request,
         new TypeReference<Result<ProductPageSearchResponse>>() {});
   }
+
+  /**
+   * 查询同类商品
+   *
+   * @param skuId
+   * @return
+   */
+  public List<ProductSimilar> queryProductSimilar(Long skuId) {
+    Assert.isNotNull(skuId, "商品编码");
+    return post(
+        getUrl() + "getSimilarSku",
+        new HashMap<String, Long>(1) {
+          {
+            put("skuId", skuId);
+          }
+        },
+        new TypeReference<Result<List<ProductSimilar>>>() {});
+  }
 }
