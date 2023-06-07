@@ -153,4 +153,18 @@ public class ProductClient extends SignClient {
         request,
         new TypeReference<Result<Map<String, ProductPromotion>>>() {});
   }
+
+  /**
+   * 批量查询商品延保信息
+   * @param request
+   * @return
+   */
+  public Map<String, ProductYanBao> queryProductYanBao(QueryProductYanBaoRequest request) {
+    Assert.isNotNull(request, "批量查询商品延保信息参数");
+    request.validate();
+    return post(
+        getUrl() + "getYanbaoSku",
+        request,
+        new TypeReference<Result<Map<String, ProductYanBao>>>() {});
+  }
 }
