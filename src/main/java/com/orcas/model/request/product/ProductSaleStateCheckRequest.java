@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductSaleStateRequest implements Serializable, IValidate {
+public class ProductSaleStateCheckRequest implements Serializable, IValidate {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品编号，支持批量，以，分隔 (最高支持100个商品) */
   private String skuIds;
@@ -31,5 +31,6 @@ public class ProductSaleStateRequest implements Serializable, IValidate {
   @Override
   public void validate() {
     Assert.isNotBlank(skuIds, "商品编号");
+    Assert.isNotBlank(params, "扩展参数");
   }
 }

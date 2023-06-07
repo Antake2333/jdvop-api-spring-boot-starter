@@ -4,9 +4,7 @@ import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
 import com.orcas.model.request.SkuRequest;
-import com.orcas.model.request.product.ProductSaleStateRequest;
-import com.orcas.model.request.product.QueryProductCodeFromPoolRequest;
-import com.orcas.model.request.product.QueryProductDetailRequest;
+import com.orcas.model.request.product.*;
 import com.orcas.model.response.product.*;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
@@ -119,10 +117,40 @@ public class ProductClient extends SignClient {
    * @param request
    * @return
    */
-  public List<ProductSaleState> queryProductSaleState(ProductSaleStateRequest request) {
+  public List<ProductSaleState> queryProductSaleState(ProductSaleStateCheckRequest request) {
     Assert.isNotNull(request, "验证商品可售性参数");
     request.validate();
     return post(
         getUrl() + "check", request, new TypeReference<Result<List<ProductSaleState>>>() {});
+  }
+
+  /**
+   * 查询商品区域购买限制
+   *
+   * @param request
+   * @return
+   */
+  public List<ProductAreaLimit> queryProductAreaLimit(ProductAreaLimitCheckRequest request) {
+    Assert.isNotNull(request, "查询商品区域购买限制参数");
+    request.validate();
+    return post(
+        getUrl() + "checkAreaLimit",
+        request,
+        new TypeReference<Result<List<ProductAreaLimit>>>() {});
+  }
+
+  /**
+   * 批量查询商品赠品信息
+   *
+   * @param request
+   * @return
+   */
+  public Map<String, ProductPromotion> queryProductGift(QueryProductGiftRequest request) {
+    Assert.isNotNull(request, "批量查询商品赠品信息参数");
+    request.validate();
+    return post(
+        getUrl() + "batchGetSkuGift",
+        request,
+        new TypeReference<Result<Map<String, ProductPromotion>>>() {});
   }
 }
