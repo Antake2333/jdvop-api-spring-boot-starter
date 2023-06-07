@@ -1,5 +1,6 @@
 package com.orcas.client;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.constant.JdVopApiConstant;
@@ -11,10 +12,13 @@ import com.orcas.model.response.product.*;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @Description @Author LinLei @Date 2023/6/6
@@ -245,5 +249,28 @@ public class ProductClient extends SignClient {
           }
         },
         new TypeReference<Result<Category>>() {});
+  }
+
+  /**
+   * 无货查询推荐商品
+   *
+   * @param request
+   * @return
+   */
+  public List<Long> queryRecommendProduct(QueryProductRecommendRequest request) {
+    Assert.isNotNull(request, "查询商品推荐参数");
+    request.validate();
+    List<JSONObject> skuIds =
+        post(
+            JdVopApiConstant.MAIN_NET_URL + "api/stock/stockOutRecommend",
+            request,
+            new TypeReference<Result<List<JSONObject>>>() {});
+    if (CollectionUtils.isEmpty(skuIds)) {
+      return null;
+    }
+    return skuIds.stream()
+        .map(data -> data.getLong("skuId"))
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
   }
 }
