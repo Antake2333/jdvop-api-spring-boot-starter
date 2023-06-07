@@ -33,6 +33,7 @@ public abstract class SignClient extends BaseClient {
    * @return
    */
   public <T> T post(String url, Object body, TypeReference<Result<T>> typeReference) {
+    // TODO 增加错误处理,还有其他的处理
     Assert.isNotBlank(url, "url");
     Assert.isNotNull(typeReference, "typeReference");
     ForestRequest<?> forestRequest =

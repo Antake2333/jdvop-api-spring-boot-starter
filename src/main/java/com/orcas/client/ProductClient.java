@@ -4,7 +4,10 @@ import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
 import com.orcas.model.request.product.QueryProductCodeFromPoolRequest;
+import com.orcas.model.request.product.QueryProductDetailRequest;
+import com.orcas.model.response.product.ProductDetail;
 import com.orcas.model.response.product.ProductPoolDetail;
+import com.orcas.model.response.product.QueryProductCodeFromPoolResponse;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -48,12 +51,25 @@ public class ProductClient extends SignClient {
    * @param request
    * @return
    */
-  public List<ProductPoolDetail> queryProductCodeFromPool(QueryProductCodeFromPoolRequest request) {
+  public QueryProductCodeFromPoolResponse queryProductCodeFromPool(
+      QueryProductCodeFromPoolRequest request) {
     Assert.isNotNull(request, "查询池内商品编号参数");
     request.validate();
     return post(
         getUrl() + "querySkuByPage",
         request,
-        new TypeReference<Result<List<ProductPoolDetail>>>() {});
+        new TypeReference<Result<QueryProductCodeFromPoolResponse>>() {});
+  }
+
+  /**
+   * 通过Sku查询商品详情
+   *
+   * @param request
+   * @return
+   */
+  public ProductDetail queryProductDetail(QueryProductDetailRequest request) {
+    Assert.isNotNull(request, "查询商品详情参数");
+    request.validate();
+    return post(getUrl() + "getDetail", request, new TypeReference<Result<ProductDetail>>() {});
   }
 }
