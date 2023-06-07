@@ -53,6 +53,10 @@ public class TokenStore {
    * @return
    */
   public String getAccessToken() {
+    // 首选去获取配置文件的临时token,如果有直接返回TOKEN,测试的时候避免重复获取TOKEN被封禁
+    if (StringUtils.isNotBlank(tokenClient.getJdVopProperties().getTempToken())) {
+      return tokenClient.getJdVopProperties().getTempToken();
+    }
     Token token = TOKEN_MAP.get(JdVopApiConstant.TOKEN);
     if (Objects.isNull(token) || StringUtils.isBlank(token.getAccessToken())) {
       token = initToken();

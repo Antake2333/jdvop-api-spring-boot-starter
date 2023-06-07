@@ -16,6 +16,7 @@ public class JdVopProperties {
   private String clientSecret;
   private String username;
   private String password;
+  private String tempToken;
 
   public String getUrl() {
     return url;
@@ -63,5 +64,13 @@ public class JdVopProperties {
   public String getPassword() {
     Assert.isNotBlank(password, "password配置");
     return password;
+  }
+
+  public String getTempToken() {
+    return tempToken;
+  }
+
+  public void setTempToken(String tempToken) {
+    this.tempToken = tempToken;
   }
 }

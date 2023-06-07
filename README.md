@@ -24,6 +24,7 @@ jdvop.client-id=xxxxxxxx
 jdvop.client-secret=xxxxxx
 jdvop.username=xxxxxxx
 jdvop.password=xxxxxxx
+jdvop.temp-token=ddddddd (测试临时TOKEN配置,避免频繁获取TOKEN)
 ```
 
 3.扫描组件(可以按需扫描)
