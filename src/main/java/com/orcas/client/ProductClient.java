@@ -3,17 +3,17 @@ package com.orcas.client;
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
+import com.orcas.model.request.SkuRequest;
 import com.orcas.model.request.product.QueryProductCodeFromPoolRequest;
 import com.orcas.model.request.product.QueryProductDetailRequest;
-import com.orcas.model.response.product.ProductDetail;
-import com.orcas.model.response.product.ProductPoolDetail;
-import com.orcas.model.response.product.QueryProductCodeFromPoolResponse;
+import com.orcas.model.response.product.*;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description @Author LinLei @Date 2023/6/6
@@ -71,5 +71,44 @@ public class ProductClient extends SignClient {
     Assert.isNotNull(request, "查询商品详情参数");
     request.validate();
     return post(getUrl() + "getDetail", request, new TypeReference<Result<ProductDetail>>() {});
+  }
+
+  /**
+   * 通过SKU查询商品详情装吧样式
+   *
+   * @param request
+   * @return
+   */
+  public Boolean queryProductDetailStyle(QueryProductDetailRequest request) {
+    Assert.isNotNull(request, "查询商品详情装吧样式参数");
+    request.validate();
+    return post(getUrl() + "getDetailStyle", request, new TypeReference<Result<Boolean>>() {});
+  }
+
+  /**
+   * 查询商品图片
+   *
+   * @param request
+   * @return
+   */
+  public Map<String, List<ProductDetailImage>> queryProductImage(SkuRequest request) {
+    Assert.isNotNull(request, "查询商品详情图片参数");
+    request.validate();
+    return post(
+        getUrl() + "skuImage",
+        request,
+        new TypeReference<Result<Map<String, List<ProductDetailImage>>>>() {});
+  }
+
+  /**
+   * 查询商品上下架状态
+   *
+   * @param request
+   * @return
+   */
+  public List<ProductState> queryProductState(SkuRequest request) {
+    Assert.isNotNull(request, "查询商品上下架状态参数");
+    request.validate();
+    return post(getUrl() + "skuState", request, new TypeReference<Result<List<ProductState>>>() {});
   }
 }
