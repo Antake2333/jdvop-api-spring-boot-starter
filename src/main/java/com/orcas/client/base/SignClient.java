@@ -61,6 +61,9 @@ public abstract class SignClient extends BaseClient {
       log.info("POST请求成功,结果为:{}", execute.getResult());
       return execute.getResult();
     } catch (Exception e) {
+      if (e instanceof JdVopApi4jException) {
+        throw e;
+      }
       log.error("POST请请求异常", e);
       throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "POST请求异常");
     }

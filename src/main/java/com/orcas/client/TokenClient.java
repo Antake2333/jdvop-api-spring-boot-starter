@@ -10,7 +10,10 @@ import com.orcas.model.Token;
 import com.orcas.model.request.token.AccessTokenRequest;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * @Description @Author LinLei @Date 2023/6/6
@@ -37,8 +40,19 @@ public class TokenClient extends BaseClient {
               .contentFormUrlEncoded()
               .addBody(request)
               .execute(new TypeReference<Result<Token>>() {});
+      if (Objects.isNull(execute) || !execute.getSuccess()) {
+        log.error("获取TOKEN请求正确,但是返回结果不正确,结果为:{}", execute);
+        throw new JdVopApi4jException(
+            JdVopApiError.JD_VOP_ERROR.getCode(),
+            StringUtils.isNotBlank(execute.getResultMessage())
+                ? execute.getResultMessage()
+                : "POST请求正确,但是返回结果不正确," + "错误码:" + execute.getResultCode());
+      }
       return execute.getResult();
     } catch (Exception e) {
+      if (e instanceof JdVopApi4jException) {
+        throw e;
+      }
       log.error("获取token失败", e);
       throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "获取token失败");
     }
