@@ -4,6 +4,7 @@ import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
 import com.orcas.model.request.SkuRequest;
+import com.orcas.model.request.product.ProductSaleStateRequest;
 import com.orcas.model.request.product.QueryProductCodeFromPoolRequest;
 import com.orcas.model.request.product.QueryProductDetailRequest;
 import com.orcas.model.response.product.*;
@@ -112,7 +113,16 @@ public class ProductClient extends SignClient {
     return post(getUrl() + "skuState", request, new TypeReference<Result<List<ProductState>>>() {});
   }
 
-  public void productCheck(){
-
+  /**
+   * 商品可售性检查
+   *
+   * @param request
+   * @return
+   */
+  public List<ProductSaleState> queryProductSaleState(ProductSaleStateRequest request) {
+    Assert.isNotNull(request, "验证商品可售性参数");
+    request.validate();
+    return post(
+        getUrl() + "check", request, new TypeReference<Result<List<ProductSaleState>>>() {});
   }
 }
