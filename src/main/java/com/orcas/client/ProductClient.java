@@ -6,6 +6,7 @@ import com.orcas.constant.JdVopApiConstant;
 import com.orcas.model.Result;
 import com.orcas.model.request.SkuRequest;
 import com.orcas.model.request.product.*;
+import com.orcas.model.response.common.Category;
 import com.orcas.model.response.product.*;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
@@ -226,5 +227,23 @@ public class ProductClient extends SignClient {
           }
         },
         new TypeReference<Result<List<ProductSimilar>>>() {});
+  }
+
+  /**
+   * 查询分类信息
+   *
+   * @param cid
+   * @return
+   */
+  public Category queryCategory(Long cid) {
+    Assert.isNotNull(cid, "分类id");
+    return post(
+        getUrl() + "getCategory",
+        new HashMap<String, Long>(1) {
+          {
+            put("cid", cid);
+          }
+        },
+        new TypeReference<Result<Category>>() {});
   }
 }
