@@ -156,6 +156,7 @@ public class ProductClient extends SignClient {
 
   /**
    * 批量查询商品延保信息
+   *
    * @param request
    * @return
    */
@@ -166,5 +167,30 @@ public class ProductClient extends SignClient {
         getUrl() + "getYanbaoSku",
         request,
         new TypeReference<Result<Map<String, ProductYanBao>>>() {});
+  }
+
+  /**
+   * @param request
+   * @return
+   */
+  public Boolean queryProductHdfk(QueryProductHdfkRequest request) {
+    Assert.isNotNull(request, "批量查询商品货到付款参数");
+    request.validate();
+    return post(getUrl() + "getIsCod", request, new TypeReference<Result<Boolean>>() {});
+  }
+
+  /**
+   * 批量查询商品货到付款
+   *
+   * @param request
+   * @return
+   */
+  public Map<String, ProductHdfk> queryProductHdfkBatch(QueryProductHdfkBatchRequest request) {
+    Assert.isNotNull(request, "批量查询商品货到付款参数");
+    request.validate();
+    return post(
+        getUrl() + "getBatchIsCod",
+        request,
+        new TypeReference<Result<Map<String, ProductHdfk>>>() {});
   }
 }
