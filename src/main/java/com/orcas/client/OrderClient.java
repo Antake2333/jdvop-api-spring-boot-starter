@@ -3,10 +3,7 @@ package com.orcas.client;
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
-import com.orcas.model.request.order.OrderConfirmRequest;
-import com.orcas.model.request.order.OrderSubmitRequest;
-import com.orcas.model.request.order.QueryOrderFreightRequest;
-import com.orcas.model.request.order.QueryOrderPromiseInfoRequest;
+import com.orcas.model.request.order.*;
 import com.orcas.model.response.order.OrderCheckCancelBatchResponse;
 import com.orcas.model.response.order.OrderSubmitResponse;
 import com.orcas.model.response.order.QueryOrderFreightResponse;
@@ -125,5 +122,17 @@ public class OrderClient extends SignClient {
           }
         },
         new TypeReference<Result<List<OrderCheckCancelBatchResponse>>>() {});
+  }
+
+  /**
+   * 取消订单 详细看文档
+   *
+   * @param request
+   * @return
+   */
+  public Boolean orderCancel(OrderCancelRequest request) {
+    Assert.isNotNull(request, "取消订单参数");
+    request.validate();
+    return post(getUrl() + "cancel", request, new TypeReference<Result<Boolean>>() {});
   }
 }
