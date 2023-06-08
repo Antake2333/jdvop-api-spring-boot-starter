@@ -3,8 +3,10 @@ package com.orcas.client;
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
+import com.orcas.model.request.order.OrderSubmitRequest;
 import com.orcas.model.request.order.QueryOrderFreightRequest;
 import com.orcas.model.request.order.QueryOrderPromiseInfoRequest;
+import com.orcas.model.response.order.OrderSubmitResponse;
 import com.orcas.model.response.order.QueryOrderFreightResponse;
 import com.orcas.model.response.order.QueryOrderPromiseInfoResponse;
 import com.orcas.util.Assert;
@@ -48,6 +50,24 @@ public class OrderClient extends SignClient {
   public QueryOrderFreightResponse queryOrderFreight(QueryOrderFreightRequest request) {
     Assert.isNotNull(request, "查询运费参数");
     request.validate();
-    return post(getUrl() + "getFreight", request.intoJd(), new TypeReference<Result<QueryOrderFreightResponse>>() {});
+    return post(
+        getUrl() + "getFreight",
+        request.intoJd(),
+        new TypeReference<Result<QueryOrderFreightResponse>>() {});
+  }
+
+  /**
+   * 提交订单
+   *
+   * @param request
+   * @return
+   */
+  public OrderSubmitResponse orderSubmit(OrderSubmitRequest request) {
+    Assert.isNotNull(request, "提交订单参数");
+    request.validate();
+    return post(
+        getUrl() + "submitOrder",
+        request.intoJd(),
+        new TypeReference<Result<OrderSubmitResponse>>() {});
   }
 }
