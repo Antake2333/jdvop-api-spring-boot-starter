@@ -4,10 +4,7 @@ import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
 import com.orcas.model.request.order.*;
-import com.orcas.model.response.order.OrderCheckCancelBatchResponse;
-import com.orcas.model.response.order.OrderSubmitResponse;
-import com.orcas.model.response.order.QueryOrderFreightResponse;
-import com.orcas.model.response.order.QueryOrderPromiseInfoResponse;
+import com.orcas.model.response.order.*;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -134,5 +131,35 @@ public class OrderClient extends SignClient {
     Assert.isNotNull(request, "取消订单参数");
     request.validate();
     return post(getUrl() + "cancel", request, new TypeReference<Result<Boolean>>() {});
+  }
+
+  /**
+   * 查询父订单详情
+   *
+   * @param request
+   * @return
+   */
+  public QueryPOrderDetailResponse queryPOrderDetail(QueryOrderDetailRequest request) {
+    Assert.isNotNull(request, "查询订单详情参数");
+    request.validate();
+    return post(
+        getUrl() + "selectJdOrder",
+        request,
+        new TypeReference<Result<QueryPOrderDetailResponse>>() {});
+  }
+
+  /**
+   * 查询子订单详情
+   *
+   * @param request
+   * @return
+   */
+  public QueryCOrderDetailResponse queryCOrderDetail(QueryOrderDetailRequest request) {
+    Assert.isNotNull(request, "查询订单详情参数");
+    request.validate();
+    return post(
+        getUrl() + "selectJdOrder",
+        request,
+        new TypeReference<Result<QueryCOrderDetailResponse>>() {});
   }
 }
