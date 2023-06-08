@@ -7,6 +7,7 @@ import com.orcas.model.request.order.OrderConfirmRequest;
 import com.orcas.model.request.order.OrderSubmitRequest;
 import com.orcas.model.request.order.QueryOrderFreightRequest;
 import com.orcas.model.request.order.QueryOrderPromiseInfoRequest;
+import com.orcas.model.response.order.OrderCheckCancelBatchResponse;
 import com.orcas.model.response.order.OrderSubmitResponse;
 import com.orcas.model.response.order.QueryOrderFreightResponse;
 import com.orcas.model.response.order.QueryOrderPromiseInfoResponse;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Description @Author LinLei @Date 2023/6/8
@@ -102,5 +104,26 @@ public class OrderClient extends SignClient {
     Assert.isNotNull(request, "确认订单参数");
     request.validate();
     return post(getUrl() + "confirmOrder", request, new TypeReference<Result<Boolean>>() {});
+  }
+
+  /**
+   * 批量查询订单是否可取消
+   *
+   * @param jdOrderIds
+   * @return
+   */
+  public List<OrderCheckCancelBatchResponse> orderCheckCancelBatch(List<Long> jdOrderIds) {
+    Assert.isNotNull(jdOrderIds, "京东订单号");
+    Assert.isTrue(jdOrderIds.size() <= 20, "京东订单号不能超过20个");
+    return post(
+        getUrl() + "batchCheckCancel",
+        new HashMap<String, String>(1) {
+          {
+            put(
+                "jdOrderIds",
+                String.join(",", jdOrderIds.stream().map(String::valueOf).toArray(String[]::new)));
+          }
+        },
+        new TypeReference<Result<List<OrderCheckCancelBatchResponse>>>() {});
   }
 }
