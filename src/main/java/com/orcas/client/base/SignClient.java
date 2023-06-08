@@ -1,6 +1,8 @@
 package com.orcas.client.base;
 
 import com.dtflys.forest.Forest;
+import com.dtflys.forest.exceptions.ForestConvertException;
+import com.dtflys.forest.exceptions.ForestHandlerException;
 import com.dtflys.forest.http.ForestRequest;
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.component.TokenStore;
@@ -70,7 +72,13 @@ public abstract class SignClient extends BaseClient {
       if (e instanceof JdVopApi4jException) {
         throw e;
       }
-      log.error("POST请请求异常", e);
+      if (e instanceof ForestHandlerException) {
+        if (Objects.nonNull(e.getCause()) && e.getCause() instanceof ForestConvertException) {
+          log.error("响应结果转换错误", e);
+          throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "响应结果转换错误");
+        }
+      }
+      log.error("POST请求异常", e);
       throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "POST请求异常");
     }
   }

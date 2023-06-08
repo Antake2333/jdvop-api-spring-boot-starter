@@ -1,11 +1,14 @@
 package com.orcas.client;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.dtflys.forest.utils.TypeReference;
 import com.orcas.client.base.SignClient;
 import com.orcas.constant.JdVopApiConstant;
 import com.orcas.model.Result;
 import com.orcas.model.request.SkuRequest;
+import com.orcas.model.request.jd.JdProductSaleStateAndStockCheckRequest;
+import com.orcas.model.request.jd.JdQueryProductStockRequest;
 import com.orcas.model.request.product.*;
 import com.orcas.model.response.common.Category;
 import com.orcas.model.response.product.*;
@@ -84,10 +87,11 @@ public class ProductClient extends SignClient {
    * @param request
    * @return
    */
-  public Boolean queryProductDetailStyle(QueryProductDetailRequest request) {
+  public ProductDetailStyle queryProductDetailStyle(QueryProductDetailRequest request) {
     Assert.isNotNull(request, "查询商品详情装吧样式参数");
     request.validate();
-    return post(getUrl() + "getDetailStyle", request, new TypeReference<Result<Boolean>>() {});
+    return post(
+        getUrl() + "getDetailStyle", request, new TypeReference<Result<ProductDetailStyle>>() {});
   }
 
   /**
@@ -280,14 +284,23 @@ public class ProductClient extends SignClient {
    * @param request
    * @return
    */
-  public ProductSaleStateAndStockCheckResponse productSaleStateAndStockCheck(
+  public List<ProductSaleStateAndStockCheckResponse> productSaleStateAndStockCheck(
       ProductSaleStateAndStockCheckRequest request) {
     Assert.isNotNull(request, "商品上下架状态和库存检查参数");
     request.validate();
-    return post(
-        JdVopApiConstant.MAIN_NET_URL + "api/stock/checkSkuSaleStateAndStock",
-        request,
-        new TypeReference<Result<ProductSaleStateAndStockCheckResponse>>() {});
+    Object result =
+        post(
+            JdVopApiConstant.MAIN_NET_URL + "api/stock" + "/checkSkuSaleStateAndStock",
+            JdProductSaleStateAndStockCheckRequest.builder()
+                .area(request.getArea())
+                .skuNums(JSON.toJSONString(request.getSkuNums()))
+                .build(),
+            new TypeReference<Result<Object>>() {});
+    if (result == null) {
+      return null;
+    }
+    return JSON.parseObject(
+        result.toString(), new TypeReference<List<ProductSaleStateAndStockCheckResponse>>() {});
   }
 
   /**
@@ -296,12 +309,37 @@ public class ProductClient extends SignClient {
    * @param request
    * @return
    */
-  public QueryProductSellPriceResponse queryProductSellPrice(QueryProductSellPriceRequest request) {
+  public List<QueryProductSellPriceResponse> queryProductSellPrice(
+      QueryProductSellPriceRequest request) {
     Assert.isNotNull(request, "商品售价查询参数");
     request.validate();
     return post(
         JdVopApiConstant.MAIN_NET_URL + "api/price/getSellPrice",
         request,
-        new TypeReference<Result<QueryProductSellPriceResponse>>() {});
+        new TypeReference<Result<List<QueryProductSellPriceResponse>>>() {});
+  }
+
+  /**
+   * 查询商品库存
+   *
+   * @param request
+   * @return
+   */
+  public List<QueryProductStockResponse> queryProductStock(QueryProductStockRequest request) {
+    Assert.isNotNull(request, "查询商品库存参数");
+    request.validate();
+    Object result =
+        post(
+            JdVopApiConstant.MAIN_NET_URL + "api/stock/getNewStockById",
+            JdQueryProductStockRequest.builder()
+                .area(request.getArea())
+                .skuNums(JSON.toJSONString(request.getSkuNums()))
+                .build(),
+            new TypeReference<Result<Object>>() {});
+    if (result == null) {
+      return null;
+    }
+    return JSON.parseObject(
+        result.toString(), new TypeReference<List<QueryProductStockResponse>>() {});
   }
 }

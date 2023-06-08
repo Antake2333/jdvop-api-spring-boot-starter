@@ -5,6 +5,7 @@ import com.orcas.client.TokenClient;
 import com.orcas.constant.JdVopApiConstant;
 import com.orcas.model.Token;
 import com.orcas.model.request.token.AccessTokenRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -19,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @Description @Author LinLei @Date 2023/6/6
  */
+@Slf4j
 @Component
 @ConditionalOnClass(TokenClient.class)
 public class TokenStore {
@@ -43,6 +45,7 @@ public class TokenStore {
                 .password(jdVopProperties.getPassword())
                 .build(),
             jdVopProperties.getClientSecret());
+    log.info("获取到的token为:{}", token);
     TOKEN_MAP.put(JdVopApiConstant.TOKEN, token);
     return token;
   }
