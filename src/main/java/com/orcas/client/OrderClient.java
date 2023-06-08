@@ -5,6 +5,7 @@ import com.orcas.client.base.SignClient;
 import com.orcas.model.Result;
 import com.orcas.model.request.order.QueryOrderFreightRequest;
 import com.orcas.model.request.order.QueryOrderPromiseInfoRequest;
+import com.orcas.model.response.order.QueryOrderFreightResponse;
 import com.orcas.model.response.order.QueryOrderPromiseInfoResponse;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
@@ -44,9 +45,9 @@ public class OrderClient extends SignClient {
    * @param request
    * @return
    */
-  public Object queryOrderFreight(QueryOrderFreightRequest request) {
+  public QueryOrderFreightResponse queryOrderFreight(QueryOrderFreightRequest request) {
     Assert.isNotNull(request, "查询运费参数");
     request.validate();
-    return post(getUrl() + "getFreight", request.intoJd(), new TypeReference<Result<Object>>() {});
+    return post(getUrl() + "getFreight", request.intoJd(), new TypeReference<Result<QueryOrderFreightResponse>>() {});
   }
 }
