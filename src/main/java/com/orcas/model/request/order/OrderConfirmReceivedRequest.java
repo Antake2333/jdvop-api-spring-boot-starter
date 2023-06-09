@@ -1,7 +1,6 @@
 package com.orcas.model.request.order;
 
 import com.orcas.model.request.BaseRequest;
-import com.orcas.model.response.order.OrderConfirmReceivedResponse;
 import com.orcas.util.Assert;
 import lombok.*;
 
@@ -13,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class OrderConfirmReceivedRequest extends BaseRequest<OrderConfirmReceivedResponse> {
+public class OrderConfirmReceivedRequest extends BaseRequest<Void> {
   /** 京东的订单单号(下单返回的父订单号) */
   private Long jdOrderId;
 

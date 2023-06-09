@@ -4,7 +4,6 @@ import com.orcas.client.base.SignClient;
 import com.orcas.constant.JdVopApiConstant;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.api.ApiRequest;
-import com.orcas.model.response.BaseResponse;
 import com.orcas.util.Assert;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -27,7 +26,7 @@ public class JdVopApiClient extends SignClient {
    * @param <T>
    * @param <R>
    */
-  public <T extends BaseRequest<R>, R extends BaseResponse> R execute(ApiRequest<T, R> request) {
+  public <T extends BaseRequest<R>, R> R execute(ApiRequest<T, R> request) {
     Assert.isNotNull(request, "请求参数");
     request.validate();
     Assert.isTrue(

@@ -2,7 +2,6 @@ package com.orcas.model.request;
 
 import com.orcas.enums.ApiEnum;
 import com.orcas.model.request.api.ApiRequest;
-import com.orcas.model.response.BaseResponse;
 import com.orcas.util.Assert;
 import lombok.Data;
 
@@ -12,7 +11,7 @@ import java.io.Serializable;
  * @Description @Author LinLei @Date 2023/6/8
  */
 @Data
-public abstract class BaseRequest<R extends BaseResponse> implements Serializable, IValidate {
+public abstract class BaseRequest<R> implements Serializable, IValidate {
   public static final Long SERIAL_VERSION_UID = 1L;
   private Class<R> responseClass;
 

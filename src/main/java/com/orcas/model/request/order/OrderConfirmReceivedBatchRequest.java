@@ -1,7 +1,7 @@
 package com.orcas.model.request.order;
 
 import com.orcas.model.request.BaseRequest;
-import com.orcas.model.response.order.OrderConfirmReceivedBatchResponse;
+import com.orcas.model.response.order.ConfirmInfo;
 import com.orcas.util.Assert;
 import lombok.*;
 
@@ -17,8 +17,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class OrderConfirmReceivedBatchRequest
-    extends BaseRequest<OrderConfirmReceivedBatchResponse> {
+public class OrderConfirmReceivedBatchRequest extends BaseRequest<List<ConfirmInfo>> {
   /** 京东的订单单号(下单返回的父订单号) */
   private List<Long> jdOrderIds;
 

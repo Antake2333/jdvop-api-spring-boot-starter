@@ -3,7 +3,6 @@ package com.orcas.model.request.api;
 import com.orcas.enums.ApiEnum;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
-import com.orcas.model.response.BaseResponse;
 import com.orcas.util.Assert;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +18,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApiRequest<T extends BaseRequest<R>, R extends BaseResponse>
-    implements Serializable, IValidate {
+public class ApiRequest<T extends BaseRequest<R>, R> implements Serializable, IValidate {
   public static final Long SERIAL_VERSION_UID = 1L;
   private ApiEnum api;
   private T request;

@@ -1,6 +1,7 @@
 package com.orcas.enums;
 
 import com.orcas.model.request.order.*;
+import com.orcas.model.request.pay.PayOrderDoPayRequest;
 import com.orcas.model.request.pay.PayQueryBalanceChangeDetailRequest;
 import com.orcas.model.request.pay.PayQueryBalanceRequest;
 
@@ -18,6 +19,7 @@ public enum ApiEnum {
   ORDER_QUERY_COMPLETE_LIST("api/checkOrder/checkCompleteOrder", OrderQueryCompleteListRequest.class, "查询完成订单列表"),
   PAY_QUERY_BALANCE("api/price/getUnionBalance", PayQueryBalanceRequest.class, "查询余额"),
   PAY_QUERY_BALANCE_CHANGE_DETAIL("api/price/getBalanceDetail", PayQueryBalanceChangeDetailRequest.class, "查询余额变动明细"),
+  PAY_ORDER_DO_PAY("api/order/doPay", PayOrderDoPayRequest.class, "发起支付"),
   ;
   private final String url;
   private final Class<?> requestClass;

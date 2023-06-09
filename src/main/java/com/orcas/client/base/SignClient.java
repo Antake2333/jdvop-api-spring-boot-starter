@@ -11,7 +11,6 @@ import com.orcas.error.JdVopApiError;
 import com.orcas.exception.JdVopApi4jException;
 import com.orcas.model.Result;
 import com.orcas.model.request.BaseRequest;
-import com.orcas.model.response.BaseResponse;
 import com.orcas.util.Assert;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -94,7 +93,7 @@ public abstract class SignClient extends BaseClient {
    * @param <R>
    * @return
    */
-  public <T extends BaseRequest<R>, R extends BaseResponse> R doExecute(String url, T request) {
+  public <T extends BaseRequest<R>, R> R doExecute(String url, T request) {
     // 判断请求参数不能为空
     Assert.isNotBlank(url, "请求地址");
     Assert.isNotNull(request, "请求参数");

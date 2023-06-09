@@ -1,7 +1,6 @@
 package com.orcas.model.request.order;
 
 import com.orcas.model.request.BaseRequest;
-import com.orcas.model.response.order.OrderSaveOrUpdatePoNoResponse;
 import com.orcas.util.Assert;
 import lombok.*;
 
@@ -13,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class OrderSaveOrUpdatePoNoRequest extends BaseRequest<OrderSaveOrUpdatePoNoResponse> {
+public class OrderSaveOrUpdatePoNoRequest extends BaseRequest<Boolean> {
   /** 京东的订单单号(下单返回的父订单号) */
   private Long jdOrderId;
   /** 采购单号，长度范围[1-26] */
