@@ -1,13 +1,9 @@
 package com.orcas.model.request.address;
 
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
+import com.orcas.model.response.address.CheckAreaResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import lombok.*;
 
 /**
  * @Description @Author LinLei @Date 2023/6/6
@@ -16,7 +12,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CheckAreaRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = true)
+public class CheckAreaRequest extends BaseRequest<CheckAreaResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 一级地址ID */
   private Integer provinceId;

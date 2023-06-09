@@ -1,4 +1,4 @@
-package com.orcas.model.response;
+package com.orcas.model.response.address;
 
 import lombok.Data;
 

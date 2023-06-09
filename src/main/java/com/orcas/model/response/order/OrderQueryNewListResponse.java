@@ -1,5 +1,6 @@
 package com.orcas.model.response.order;
 
+import com.orcas.model.response.BaseResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +12,8 @@ import java.util.List;
  * @Description @Author LinLei @Date 2023/6/9
  */
 @Data
-public class OrderQueryNewListResponse {
+@EqualsAndHashCode(callSuper = false)
+public class OrderQueryNewListResponse extends BaseResponse {
   /** 订单总数 */
   private Integer total;
   /** 总页码数 */

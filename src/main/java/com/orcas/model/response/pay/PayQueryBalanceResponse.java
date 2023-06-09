@@ -1,6 +1,8 @@
 package com.orcas.model.response.pay;
 
+import com.orcas.model.response.BaseResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -9,7 +11,8 @@ import java.math.BigDecimal;
  * @Description @Author LinLei @Date 2023/6/9
  */
 @Data
-public class PayQueryBalanceResponse {
+@EqualsAndHashCode(callSuper = true)
+public class PayQueryBalanceResponse extends BaseResponse {
 
   /** 当type入参中包含1时，此对象出现。 */
   private Balance balance;
