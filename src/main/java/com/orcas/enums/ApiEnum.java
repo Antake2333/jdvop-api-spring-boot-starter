@@ -12,6 +12,8 @@ public enum ApiEnum {
   ORDER_SAVE_OR_UPDATE_PONO("api/order/saveOrUpdatePoNo", OrderSaveOrUpdatePoNoRequest.class, "更新采购单号"),
   ORDER_QUERY_NEW_LIST("api/checkOrder/checkNewOrder", OrderQueryNewListRequest.class, "查询新建订单列表"),
   ORDER_QUERY_DLOK_LIST("api/checkOrder/checkDlokOrder", OrderQueryDlokListRequest.class, "查询妥投订单列表"),
+  ORDER_QUERY_REFUSE_LIST("api/checkOrder/checkRefuseOrder", OrderQueryRefuseListRequest.class, "查询拒收订单列表"),
+  ORDER_QUERY_COMPLETE_LIST("api/checkOrder/checkCompleteOrder", OrderQueryCompleteListRequest.class, "查询完成订单列表"),
   ;
   private final String url;
   private final Class<?> requestClass;
