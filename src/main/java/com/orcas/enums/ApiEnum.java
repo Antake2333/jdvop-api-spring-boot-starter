@@ -1,5 +1,6 @@
 package com.orcas.enums;
 
+import com.orcas.model.request.order.OrderConfirmReceivedBatchRequest;
 import com.orcas.model.request.order.OrderConfirmReceivedRequest;
 
 /**
@@ -8,6 +9,8 @@ import com.orcas.model.request.order.OrderConfirmReceivedRequest;
 public enum ApiEnum {
   /** 订单确认收货 */
   ORDER_CONFIRM_RECEIVED("api/order/confirmReceived", OrderConfirmReceivedRequest.class, "订单确认收货"),
+  ORDER_CONFIRM_RECEIVED_BATCH(
+      "api/order/batchConfirmReceived", OrderConfirmReceivedBatchRequest.class, "订单批量确认收货"),
   ;
   private final String url;
   private final Class<?> requestClass;
