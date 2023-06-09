@@ -2,7 +2,7 @@ package com.orcas.model.request.product;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
-import com.orcas.model.response.product.ProductDetail;
+import com.orcas.model.response.product.ProductDetailStyle;
 import com.orcas.util.Assert;
 import lombok.*;
 
@@ -14,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class QueryProductDetailRequest extends BaseRequest<ProductDetail> {
+public class QueryProductDetailStyleRequest extends BaseRequest<ProductDetailStyle> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品编号，只支持单个查询 */
   private String sku;

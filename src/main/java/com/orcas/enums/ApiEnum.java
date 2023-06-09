@@ -5,6 +5,7 @@ import com.orcas.model.request.order.*;
 import com.orcas.model.request.pay.PayOrderDoPayRequest;
 import com.orcas.model.request.pay.PayQueryBalanceChangeDetailRequest;
 import com.orcas.model.request.pay.PayQueryBalanceRequest;
+import com.orcas.model.request.product.*;
 
 /**
  * @Description @Author LinLei @Date 2023/6/9
@@ -17,6 +18,26 @@ public enum ApiEnum {
   ADDRESS_GET_FORTH_ADDRESS("api/area/getTown", AddressGetForthRequest.class, "获取四级地址"),
   ADDRESS_CHECK_AREA("api/area/checkArea", CheckAreaRequest.class, "检查地址"),
   ADDRESS_GET_ADDRESS("api/area/getJDAddressFromAddress", AddressGetRequest.class, "地址转换成京东地址"),
+  // 商品相关
+  PRODUCT_GET_POOL_CODE("api/product/getPageNum", ProductGetPoolCodeRequest.class, "获取商品池信息"),
+  PRODUCT_QUERY_PRODUCT_CODE_FROM_POOL("api/product/querySkuByPage", QueryProductCodeFromPoolRequest.class, "从商品池子内通过商品编号查询商品信息"),
+  PRODUCT_QUERY_PRODUCT_DETAIL("api/product/getDetail", QueryProductDetailRequest.class, "通过Sku查询商品详情"),
+  PRODUCT_QUERY_PRODUCT_DETAIL_STYLE("api/product/getDetailStyle", QueryProductDetailStyleRequest.class, "查询商品详情装吧样式"),
+  PRODUCT_QUERY_PRODUCT_IMAGE("api/product/skuImage", ProductQueryProductImageRequest.class, "查询商品图片"),
+  PRODUCT_QUERY_PRODUCT_STATE("api/product/skuState", ProductQueryProductStateRequest.class, "查询商品上下架状态"),
+  PRODUCT_QUERY_PRODUCT_SALE_STATE("api/product/check", ProductSaleStateCheckRequest.class, "验证商品可售性"),
+  PRODUCT_QUERY_AREA_LIMIT("api/product/checkAreaLimit", ProductAreaLimitCheckRequest.class, "查询商品区域购买限制"),
+  PRODUCT_QUERY_GIFT("api/product/batchGetSkuGift", QueryProductGiftRequest.class, "批量查询商品赠品信息"),
+  PRODUCT_QUERY_YAN_BAO("api/product/getYanbaoSku", QueryProductYanBaoRequest.class, "批量查询商品延保信息"),
+  PRODUCT_QUERY_IS_COD("api/product/getIsCod", QueryProductHdfkRequest.class, "批量查询商品货到付款"),
+  PRODUCT_QUERY_BATCH_IS_COD("api/product/getBatchIsCod", QueryProductHdfkBatchRequest.class, "批量查询商品货到付款"),
+  PRODUCT_QUERY_BY_PAGE("api/search/search", ProductPageSearchRequest.class, "搜索商品"),
+  PRODUCT_QUERY_SIMILAR("api/product/getSimilarSku", ProductQuerySimilarRequest.class, "查询同类商品"),
+  PRODUCT_QUERY_CATEGORY("api/product/getCategory", ProductQueryCategoryRequest.class, "查询分类信息"),
+  PRODUCT_QUERY_RECOMMEND("api/stock/stockOutRecommend", QueryProductRecommendRequest.class, "无货查询推荐商品"),
+  PRODUCT_SALE_STATE_AND_STOCK_CHECK("api/stock/checkSkuSaleStateAndStock", ProductSaleStateAndStockCheckRequest.class, "商品上下架状态和库存检查"),
+  PRODUCT_QUERY_SELL_PRICE("api/price/getSellPrice", QueryProductSellPriceRequest.class, "商品售价查询"),
+  PRODUCT_QUERY_STOCK("api/stock/getNewStockById", QueryProductStockRequest.class, "查询商品库存"),
   // 订单相关
   ORDER_CONFIRM_RECEIVED("api/order/confirmReceived", OrderConfirmReceivedRequest.class, "订单确认收货"),
   ORDER_CONFIRM_RECEIVED_BATCH("api/order/batchConfirmReceived", OrderConfirmReceivedBatchRequest.class, "订单批量确认收货"),

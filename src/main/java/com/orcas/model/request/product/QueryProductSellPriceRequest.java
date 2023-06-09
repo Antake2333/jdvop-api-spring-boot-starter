@@ -1,16 +1,13 @@
 package com.orcas.model.request.product;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
+import com.orcas.model.response.product.QueryProductSellPriceResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.util.CollectionUtils;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +17,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryProductSellPriceRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryProductSellPriceRequest extends BaseRequest<List<QueryProductSellPriceResponse>> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品编号，请以，(英文逗号)分割。例如：129408,129409 (最高支持100个商品) */
   private String sku;

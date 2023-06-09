@@ -1,13 +1,10 @@
 package com.orcas.model.request.product;
 
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
+import com.orcas.model.response.product.QueryProductCodeFromPoolResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 
 /**
@@ -17,7 +14,8 @@ import java.math.BigInteger;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryProductCodeFromPoolRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryProductCodeFromPoolRequest extends BaseRequest<QueryProductCodeFromPoolResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品池编码 */
   private String pageNum;

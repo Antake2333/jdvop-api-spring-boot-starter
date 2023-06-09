@@ -1,14 +1,9 @@
 package com.orcas.model.request.product;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import lombok.*;
 
 /**
  * @Description @Author LinLei @Date 2023/6/7
@@ -17,7 +12,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryProductHdfkRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryProductHdfkRequest extends BaseRequest<Boolean> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品编号，支持批量，以，分隔 (最高支持100个商品) */
   private String skuIds;

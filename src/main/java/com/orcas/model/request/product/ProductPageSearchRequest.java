@@ -1,13 +1,9 @@
 package com.orcas.model.request.product;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.orcas.model.request.IValidate;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import com.orcas.model.request.BaseRequest;
+import com.orcas.model.response.product.ProductPageSearchResponse;
+import lombok.*;
 
 /**
  * @Description @Author LinLei @Date 2023/6/7
@@ -16,7 +12,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductPageSearchRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class ProductPageSearchRequest extends BaseRequest<ProductPageSearchResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
 
   /** 搜索关键字，需要编码 */

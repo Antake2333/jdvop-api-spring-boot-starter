@@ -1,5 +1,6 @@
 package com.orcas.client.base;
 
+import com.alibaba.fastjson.JSON;
 import com.dtflys.forest.Forest;
 import com.dtflys.forest.exceptions.ForestConvertException;
 import com.dtflys.forest.exceptions.ForestHandlerException;
@@ -100,6 +101,15 @@ public abstract class SignClient extends BaseClient {
     // 调用校验方法
     request.validate();
     // 调用post方法,获取结果后返回
-    return post(url, request.into(), new TypeReference<Result<R>>() {});
+    Object result = post(url, request.into(), new TypeReference<Result<Object>>() {});
+    if (Objects.isNull(result)) {
+      return null;
+    }
+    try {
+      return JSON.parseObject(request.toString(), request.getResponseClass());
+    } catch (Exception e) {
+      log.error("转换结果异常,返回结果:{}", result, e);
+      throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "转换结果异常");
+    }
   }
 }

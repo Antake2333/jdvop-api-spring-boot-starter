@@ -1,13 +1,13 @@
 package com.orcas.model.request.product;
 
+import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
+import com.orcas.model.response.product.ProductYanBao;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * @Description @Author LinLei @Date 2023/6/7
@@ -16,7 +16,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryProductYanBaoRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryProductYanBaoRequest extends BaseRequest<Map<String, ProductYanBao>> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品编号，支持批量，以，分隔 (最高支持100个商品) */
   private String skuIds;
