@@ -10,6 +10,8 @@ import com.orcas.constant.JdVopApiConstant;
 import com.orcas.error.JdVopApiError;
 import com.orcas.exception.JdVopApi4jException;
 import com.orcas.model.Result;
+import com.orcas.model.request.BaseRequest;
+import com.orcas.model.response.BaseResponse;
 import com.orcas.util.Assert;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -81,5 +83,24 @@ public abstract class SignClient extends BaseClient {
       log.error("POST请求异常", e);
       throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "POST请求异常");
     }
+  }
+
+  /**
+   * 再抽象的调用方法,将返回参数,包装在入参里面,这样可以不用再写返回类型了
+   *
+   * @param url
+   * @param request
+   * @param <T>
+   * @param <R>
+   * @return
+   */
+  public <T extends BaseRequest<R>, R extends BaseResponse> R doExecute(String url, T request) {
+    // 判断请求参数不能为空
+    Assert.isNotBlank(url, "请求地址");
+    Assert.isNotNull(request, "请求参数");
+    // 调用校验方法
+    request.validate();
+    // 调用post方法,获取结果后返回
+    return post(url, request.into(), new TypeReference<Result<R>>() {});
   }
 }

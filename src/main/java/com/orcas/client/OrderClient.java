@@ -162,4 +162,23 @@ public class OrderClient extends SignClient {
         request,
         new TypeReference<Result<QueryCOrderDetailResponse>>() {});
   }
+
+  /**
+   * 查询订单配送信息
+   *
+   * @param request
+   * @return
+   */
+  public QueryOrderTrackResponse queryOrderTrack(QueryOrderTrackRequest request) {
+    Assert.isNotNull(request, "查询订单配送信息参数");
+    request.validate();
+    return post(
+        getUrl() + "orderTrack", request, new TypeReference<Result<QueryOrderTrackResponse>>() {});
+  }
+
+  public void orderConfirmReceived(Long jdOrderId) {
+    Assert.isNotNull(jdOrderId, "京东订单号");
+    /*return post(
+            getUrl() + "orderTrack", request, new TypeReference<Result<QueryOrderTrackResponse>>() {});*/
+  }
 }
