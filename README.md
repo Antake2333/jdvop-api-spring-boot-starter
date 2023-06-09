@@ -42,24 +42,6 @@ public class DemoApplication {
 ```java
 
 @SpringBootTest(classes = DemoApplication.class)
-public class AddressTest {
-    @Autowired
-    private AddressClient client;
-
-    @Test
-    void first() {
-        System.out.println(client.getFirstAddress());
-    }
-}
-```
-
-异常处理 //待补充
-
-补充说明 新增统一门面 JdVopApiClient后续都只通过这个来调用京东的API,参考例子如下:
-
-```java
-
-@SpringBootTest(classes = DemoApplication.class)
 public class ApiTest {
     @Autowired
     private JdVopApiClient client;
@@ -75,3 +57,6 @@ public class ApiTest {
     }
 }
 ```
+
+异常处理 //待补充
+只需要全局捕获`JdVopApi4jException`处理即可
