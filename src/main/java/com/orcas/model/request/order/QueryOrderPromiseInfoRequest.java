@@ -1,13 +1,9 @@
 package com.orcas.model.request.order;
 
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
+import com.orcas.model.response.order.QueryOrderPromiseInfoResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import lombok.*;
 
 /**
  * @Description @Author LinLei @Date 2023/6/8
@@ -16,7 +12,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryOrderPromiseInfoRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryOrderPromiseInfoRequest extends BaseRequest<QueryOrderPromiseInfoResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品编号 */
   private String skuId;

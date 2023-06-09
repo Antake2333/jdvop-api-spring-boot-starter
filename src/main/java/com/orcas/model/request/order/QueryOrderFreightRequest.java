@@ -2,13 +2,11 @@ package com.orcas.model.request.order;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
+import com.orcas.model.response.order.QueryOrderFreightResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
@@ -21,7 +19,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryOrderFreightRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryOrderFreightRequest extends BaseRequest<QueryOrderFreightResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 商品和数量 [{skuId: 569172,num:101}]。 “{skuId: 569172,num:10}”为1条记录，此参数最多传入100条记录。 */
   private List<SkuNum> skuNums;
@@ -72,7 +71,8 @@ public class QueryOrderFreightRequest implements Serializable, IValidate {
     private String params;
   }
 
-  public JdQueryOrderFreightRequest intoJd() {
+  @Override
+  public Object into() {
     JdQueryOrderFreightRequest jdQueryOrderFreightRequest = new JdQueryOrderFreightRequest();
     if (!CollectionUtils.isEmpty(skuNums)) {
       jdQueryOrderFreightRequest.setSku(JSON.toJSONString(skuNums));

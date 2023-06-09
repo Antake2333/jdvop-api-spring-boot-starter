@@ -1,14 +1,10 @@
 package com.orcas.model.request.order;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
+import com.orcas.model.response.order.QueryCOrderDetailResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import lombok.*;
 
 /**
  * @Description @Author LinLei @Date 2023/6/8
@@ -17,7 +13,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryOrderDetailRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class QueryCOrderDetailRequest extends BaseRequest<QueryCOrderDetailResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 京东的订单单号(父订单号/子订单号) */
   private Long jdOrderId;

@@ -1,8 +1,9 @@
 package com.orcas.model.request.order;
 
 import com.alibaba.fastjson.JSON;
-import com.orcas.model.request.IValidate;
+import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
+import com.orcas.model.response.order.OrderSubmitResponse;
 import com.orcas.util.Assert;
 import lombok.*;
 import org.springframework.util.CollectionUtils;
@@ -21,7 +22,8 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderSubmitRequest implements Serializable, IValidate {
+@EqualsAndHashCode(callSuper = false)
+public class OrderSubmitRequest extends BaseRequest<OrderSubmitResponse> {
   public static final Long SERIAL_VERSION_UID = 1L;
   /** 第三方的订单单号，必须在100字符以内 */
   private String thirdOrder;
@@ -299,7 +301,22 @@ public class OrderSubmitRequest implements Serializable, IValidate {
     private Map<String, Object> customOrderExt;
   }
 
-  public JdOrderSubmitRequest intoJd() {
+  @EqualsAndHashCode(callSuper = true)
+  @Data
+  public static class OrderSkuNum extends SkuNum implements Serializable {
+    public static final Long SERIAL_VERSION_UID = 1L;
+    private Boolean bNeedGift;
+    private List<OrderYanBao> yanbao;
+  }
+
+  @Data
+  public static class OrderYanBao implements Serializable {
+    public static final Long SERIAL_VERSION_UID = 1L;
+    private String skuId;
+  }
+
+  @Override
+  public Object into() {
     JdOrderSubmitRequest request = new JdOrderSubmitRequest();
     request.setThirdOrder(thirdOrder);
     if (!CollectionUtils.isEmpty(skuNums)) {
@@ -362,19 +379,5 @@ public class OrderSubmitRequest implements Serializable, IValidate {
     request.setCPin(cPin);
     request.setCustomOrderExt(customOrderExt);
     return request;
-  }
-
-  @EqualsAndHashCode(callSuper = true)
-  @Data
-  public static class OrderSkuNum extends SkuNum implements Serializable {
-    public static final Long SERIAL_VERSION_UID = 1L;
-    private Boolean bNeedGift;
-    private List<OrderYanBao> yanbao;
-  }
-
-  @Data
-  public static class OrderYanBao implements Serializable {
-    public static final Long SERIAL_VERSION_UID = 1L;
-    private String skuId;
   }
 }
