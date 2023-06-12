@@ -1,9 +1,7 @@
 package com.orcas.enums;
 
 import com.orcas.model.request.address.*;
-import com.orcas.model.request.aftersales.CreateAfsApplyRequest;
-import com.orcas.model.request.aftersales.QuerySummaryRequest;
-import com.orcas.model.request.aftersales.SupportedInfoRequest;
+import com.orcas.model.request.aftersales.*;
 import com.orcas.model.request.order.*;
 import com.orcas.model.request.pay.PayOrderDoPayRequest;
 import com.orcas.model.request.pay.PayQueryBalanceChangeDetailRequest;
@@ -67,6 +65,12 @@ public enum ApiEnum {
   AFTER_SALES_GET_GOODS_ATTRIBUTES("api/afterSaleNew/getGoodsAttributes", SupportedInfoRequest.class, "查询商品售后属性"),
   AFTER_SALES_APPLY("api/afterSaleNew/createAfsApply", CreateAfsApplyRequest.class, "申请售后"),
   AFTER_SALES_QUERY_SUMMARY("api/afterSaleNew/getAfsOutline", QuerySummaryRequest.class, "查询售后概要"),
+  AFTER_SALES_QUERY_SUMMARY_NEW("api/afterSaleNew/getAfsOutline", AfterSaleNewRequest.class, "查询售后概要"),
+  AFTER_SALES_QUERY_APPLY_DETAIL("api/afterSaleNew/getApplyDetailInfo", ApplyDetailInfoRequest.class, "查询售后清单明细"),
+  AFTER_SALES_CANCEL_APPLY("api/afterSaleNew/cancelAfsApply", CancelAfsApplyRequest.class, "取消售后申请"),
+  AFTER_SALES_CONFIRM_APPLY("api/afterSaleNew/confirmAfsOrder", ConfirmAfsOrderRequest.class, "确认售后完成"),
+  AFTER_SALES_QUERY_RENEW_ORDER_RELATIONSHIP_INFO("api/afterSaleNew/queryRenewOrderRelationshipInfo", RenewOrderRelationshipInfosRequest.class, "查询物流信息"),
+  AFTER_SALES_UPDATE_SEND_INFO("api/afterSaleNew/updateSendInfo", SaleSendInfoRequest.class, "填写运单信息"),
   ;
   private final String url;
   private final Class<?> requestClass;

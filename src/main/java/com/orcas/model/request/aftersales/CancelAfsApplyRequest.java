@@ -2,10 +2,7 @@ package com.orcas.model.request.aftersales;
 
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashMap;
 
@@ -16,7 +13,8 @@ import java.util.HashMap;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CancelAfsApplyRequest extends BaseRequest {
+@EqualsAndHashCode(callSuper = true)
+public class CancelAfsApplyRequest extends BaseRequest<Void> {
 
     /**
      * 订单号，即京东子订单号

@@ -3,10 +3,7 @@ package com.orcas.model.request.aftersales;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -20,6 +17,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class SaleSendInfoRequest extends BaseRequest<Void> {
 
     /**
@@ -46,7 +44,7 @@ public class SaleSendInfoRequest extends BaseRequest<Void> {
     public void validate() {
         Assert.isNotNull(orderId, "订单号，即京东子订单号");
         Assert.isNotNull(thirdApplyId, "申请批次号，同一子订单下不可重复（长度最大20）");
-        waybillInfoList.stream().forEach(waybillInfo -> {waybillInfo.validate();});
+        waybillInfoList.forEach(WaybillInfo::validate);
     }
 
     /**

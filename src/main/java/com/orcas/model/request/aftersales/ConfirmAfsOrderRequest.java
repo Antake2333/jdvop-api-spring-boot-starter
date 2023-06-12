@@ -2,10 +2,7 @@ package com.orcas.model.request.aftersales;
 
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +14,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class ConfirmAfsOrderRequest extends BaseRequest<Void> {
 
     /**
