@@ -6,10 +6,7 @@ import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.model.response.aftersales.SupportedInfoResponse;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -22,6 +19,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class SupportedInfoRequest extends BaseRequest<SupportedInfoResponse> {
 
     /**

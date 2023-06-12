@@ -1,6 +1,9 @@
 package com.orcas.enums;
 
 import com.orcas.model.request.address.*;
+import com.orcas.model.request.aftersales.CreateAfsApplyRequest;
+import com.orcas.model.request.aftersales.QuerySummaryRequest;
+import com.orcas.model.request.aftersales.SupportedInfoRequest;
 import com.orcas.model.request.order.*;
 import com.orcas.model.request.pay.PayOrderDoPayRequest;
 import com.orcas.model.request.pay.PayQueryBalanceChangeDetailRequest;
@@ -60,6 +63,10 @@ public enum ApiEnum {
   PAY_QUERY_BALANCE("api/price/getUnionBalance", PayQueryBalanceRequest.class, "查询余额"),
   PAY_QUERY_BALANCE_CHANGE_DETAIL("api/price/getBalanceDetail", PayQueryBalanceChangeDetailRequest.class, "查询余额变动明细"),
   PAY_ORDER_DO_PAY("api/order/doPay", PayOrderDoPayRequest.class, "发起支付"),
+  // 售后
+  AFTER_SALES_GET_GOODS_ATTRIBUTES("api/afterSaleNew/getGoodsAttributes", SupportedInfoRequest.class, "查询商品售后属性"),
+  AFTER_SALES_APPLY("api/afterSaleNew/createAfsApply", CreateAfsApplyRequest.class, "申请售后"),
+  AFTER_SALES_QUERY_SUMMARY("api/afterSaleNew/getAfsOutline", QuerySummaryRequest.class, "查询售后概要"),
   ;
   private final String url;
   private final Class<?> requestClass;

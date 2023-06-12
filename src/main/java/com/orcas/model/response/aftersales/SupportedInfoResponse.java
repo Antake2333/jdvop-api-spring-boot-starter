@@ -1,6 +1,8 @@
 package com.orcas.model.response.aftersales;
 
+import com.orcas.model.response.BaseResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +10,8 @@ import java.util.List;
  * 查询商品售后属性
  */
 @Data
-public class SupportedInfoResponse implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class SupportedInfoResponse extends BaseResponse {
     /**
      * 商品编码
      */
