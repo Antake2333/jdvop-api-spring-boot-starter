@@ -3,10 +3,7 @@ package com.orcas.model.request.aftersales;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.util.Assert;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -20,6 +17,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class CreateAfsApplyRequest extends BaseRequest<Void>{
 
     /**
@@ -304,7 +302,7 @@ public class CreateAfsApplyRequest extends BaseRequest<Void>{
         customerInfo.validate();
         pickwareInfo.validate();
         returnWareInfo.validate();
-        afsApplyInfoItemList.stream().forEach(afsApplyInfoItem -> afsApplyInfoItem.validate());
+        afsApplyInfoItemList.forEach(AfsApplyInfoItem::validate);
     }
 
     @Override
