@@ -13,7 +13,6 @@ import java.io.Serializable;
 @Data
 public abstract class BaseRequest<R> implements Serializable, IValidate {
   public static final Long SERIAL_VERSION_UID = 1L;
-  private Class<R> responseClass;
 
   /**
    * 转换成JD要的参数,可能向外提供的参数是自己的,传递给JD需要转换一下,需要重写一下该方法

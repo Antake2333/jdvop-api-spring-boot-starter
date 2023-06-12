@@ -2,6 +2,8 @@ package com.orcas.enums;
 
 import com.orcas.model.request.address.*;
 import com.orcas.model.request.aftersales.*;
+import com.orcas.model.request.messagepush.MessagePushDeleteRequest;
+import com.orcas.model.request.messagepush.MessagePushGetRequest;
 import com.orcas.model.request.order.*;
 import com.orcas.model.request.pay.PayOrderDoPayRequest;
 import com.orcas.model.request.pay.PayQueryBalanceChangeDetailRequest;
@@ -71,6 +73,9 @@ public enum ApiEnum {
   AFTER_SALES_CONFIRM_APPLY("api/afterSaleNew/confirmAfsOrder", ConfirmAfsOrderRequest.class, "确认售后完成"),
   AFTER_SALES_QUERY_RENEW_ORDER_RELATIONSHIP_INFO("api/afterSaleNew/queryRenewOrderRelationshipInfo", RenewOrderRelationshipInfosRequest.class, "查询物流信息"),
   AFTER_SALES_UPDATE_SEND_INFO("api/afterSaleNew/updateSendInfo", SaleSendInfoRequest.class, "填写运单信息"),
+  // 消息推送
+  MESSAGE_PUSH_GET("api/message/get", MessagePushGetRequest.class, "查询推送消息"),
+  MESSAGE_PUSH_DELETE("api/message/del", MessagePushDeleteRequest.class, "删除推送信息"),
   ;
   private final String url;
   private final Class<?> requestClass;

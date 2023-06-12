@@ -106,7 +106,7 @@ public abstract class SignClient extends BaseClient {
       return null;
     }
     try {
-      return JSON.parseObject(request.toString(), request.getResponseClass());
+      return JSON.parseObject(result.toString(), new com.alibaba.fastjson.TypeReference<R>() {});
     } catch (Exception e) {
       log.error("转换结果异常,返回结果:{}", result, e);
       throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "转换结果异常");
