@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Objects;
 
 /**
@@ -106,10 +107,29 @@ public abstract class SignClient extends BaseClient {
       return null;
     }
     try {
-      return JSON.parseObject(result.toString(), new com.alibaba.fastjson.TypeReference<R>() {});
+      return JSON.parseObject(result.toString(), getResponseClass(request));
     } catch (Exception e) {
       log.error("转换结果异常,返回结果:{}", result, e);
       throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "转换结果异常");
+    }
+  }
+
+  /**
+   * 获取返回值类型
+   *
+   * @param request
+   * @param <R>
+   * @return
+   */
+  private <R> Class<R> getResponseClass(BaseRequest<R> request) {
+    Assert.isNotNull(request, "请求参数");
+    try {
+      return (Class<R>)
+          ((ParameterizedType) request.getClass().getGenericSuperclass())
+              .getActualTypeArguments()[0];
+    } catch (Exception e) {
+      log.error("获取返回类型异常", e);
+      throw new JdVopApi4jException(JdVopApiError.JD_VOP_ERROR.getCode(), "获取返回类型异常");
     }
   }
 }
