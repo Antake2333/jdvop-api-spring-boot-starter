@@ -106,7 +106,7 @@ public abstract class SignClient extends BaseClient {
       return null;
     }
     try {
-      return JSON.parseObject(result.toString(), new com.alibaba.fastjson.TypeReference<R>(){});
+      return JSON.parseObject(result.toString(), request.getRespTypeReference());
     } catch (Exception e) {
       if (e instanceof JdVopApi4jException) {
         throw e;

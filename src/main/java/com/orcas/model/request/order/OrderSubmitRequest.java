@@ -1,6 +1,7 @@
 package com.orcas.model.request.order;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
 import com.orcas.model.response.order.OrderSubmitResponse;
@@ -313,6 +314,11 @@ public class OrderSubmitRequest extends BaseRequest<OrderSubmitResponse> {
   public static class OrderYanBao implements Serializable {
     public static final Long SERIAL_VERSION_UID = 1L;
     private String skuId;
+  }
+
+  @Override
+  public TypeReference<OrderSubmitResponse> getRespTypeReference() {
+    return new TypeReference<OrderSubmitResponse>() {};
   }
 
   @Override

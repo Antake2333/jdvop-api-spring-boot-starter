@@ -1,5 +1,6 @@
 package com.orcas.model.request.address;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.address.AddressDetailResponse;
 import com.orcas.util.Assert;
@@ -19,5 +20,10 @@ public class AddressGetRequest extends BaseRequest<AddressDetailResponse> {
   @Override
   public void validate() {
     Assert.isNotBlank(address, "地址");
+  }
+
+  @Override
+  public TypeReference<AddressDetailResponse> getRespTypeReference() {
+    return new TypeReference<AddressDetailResponse>() {};
   }
 }

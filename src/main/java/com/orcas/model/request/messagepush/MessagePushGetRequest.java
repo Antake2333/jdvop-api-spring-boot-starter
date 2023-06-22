@@ -1,5 +1,6 @@
 package com.orcas.model.request.messagepush;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.messagepush.MessagePushGetResponse;
 import com.orcas.util.Assert;
@@ -24,6 +25,11 @@ public class MessagePushGetRequest extends BaseRequest<List<MessagePushGetRespon
   @Override
   public void validate() {
     Assert.isNotNull(messageTypes, "消息类型");
+  }
+
+  @Override
+  public TypeReference<List<MessagePushGetResponse>> getRespTypeReference() {
+    return new TypeReference<List<MessagePushGetResponse>>() {};
   }
 
   @Override

@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.QueryCOrderDetailResponse;
@@ -29,5 +30,10 @@ public class QueryCOrderDetailRequest extends BaseRequest<QueryCOrderDetailRespo
   @Override
   public void validate() {
     Assert.isNotNull(jdOrderId, "京东的订单单号");
+  }
+
+  @Override
+  public TypeReference<QueryCOrderDetailResponse> getRespTypeReference() {
+    return new TypeReference<QueryCOrderDetailResponse>() {};
   }
 }

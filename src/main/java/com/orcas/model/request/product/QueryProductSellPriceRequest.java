@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
@@ -38,5 +39,10 @@ public class QueryProductSellPriceRequest extends BaseRequest<List<QueryProductS
     if (CollectionUtils.isEmpty(skuInfos)) {
       Assert.isNotBlank(sku, "商品编号");
     }
+  }
+
+  @Override
+  public TypeReference<List<QueryProductSellPriceResponse>> getRespTypeReference() {
+    return new TypeReference<List<QueryProductSellPriceResponse>>() {};
   }
 }

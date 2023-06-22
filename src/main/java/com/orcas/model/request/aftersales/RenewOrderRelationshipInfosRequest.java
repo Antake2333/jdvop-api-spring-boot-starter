@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.aftersales.WayBillInfoResponse;
 import com.orcas.util.Assert;
@@ -47,6 +48,12 @@ public class RenewOrderRelationshipInfosRequest extends BaseRequest<List<WayBill
         Assert.isNotNull(customerPin, "京东PIN。必须是相同合同下的pin。");
         Assert.isNotNull(thirdApplyId, "申请批次号，同一子订单下不可重复（长度最大20）");
         Assert.isNotNull(originalOrderId, "原始订单号");
+    }
+
+    @Override
+    public TypeReference<List<WayBillInfoResponse>> getRespTypeReference() {
+        return new TypeReference<List<WayBillInfoResponse>>() {
+        };
     }
 
     @Override

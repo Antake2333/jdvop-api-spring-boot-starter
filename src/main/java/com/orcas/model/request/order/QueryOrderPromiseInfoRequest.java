@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.QueryOrderPromiseInfoResponse;
 import com.orcas.util.Assert;
@@ -36,5 +37,10 @@ public class QueryOrderPromiseInfoRequest extends BaseRequest<QueryOrderPromiseI
     Assert.isNotNull(city, "二级地址");
     Assert.isNotNull(county, "三级地址");
     Assert.isNotNull(town, "四级地址");
+  }
+
+  @Override
+  public TypeReference<QueryOrderPromiseInfoResponse> getRespTypeReference() {
+    return new TypeReference<QueryOrderPromiseInfoResponse>() {};
   }
 }

@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -22,5 +23,10 @@ public class OrderSaveOrUpdatePoNoRequest extends BaseRequest<Boolean> {
   public void validate() {
     Assert.isNotNull(jdOrderId, "京东的订单单号");
     Assert.hasTxt(poNo, "采购单号", 1, 26);
+  }
+
+  @Override
+  public TypeReference<Boolean> getRespTypeReference() {
+    return new TypeReference<Boolean>(){};
   }
 }

@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -23,5 +24,10 @@ public class OrderCancelRequest extends BaseRequest<Boolean> {
   public void validate() {
     Assert.isNotBlank(jdOrderId, "京东的订单单号");
     Assert.isNotBlank(cancelReason, "取消理由");
+  }
+
+  @Override
+  public TypeReference<Boolean> getRespTypeReference() {
+    return new TypeReference<Boolean>(){};
   }
 }

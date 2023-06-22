@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.OrderQueryDlokListResponse;
 import com.orcas.util.Assert;
@@ -53,6 +54,11 @@ public class OrderQueryDlokListRequest extends BaseRequest<OrderQueryDlokListRes
     private Integer pageSize = 20;
     private Long jdOrderIdIndex;
     private String endDate;
+  }
+
+  @Override
+  public TypeReference<OrderQueryDlokListResponse> getRespTypeReference() {
+    return new TypeReference<OrderQueryDlokListResponse>() {};
   }
 
   @Override

@@ -1,5 +1,6 @@
 package com.orcas.model.request.pay;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import lombok.*;
 
@@ -17,4 +18,9 @@ public class PayOrderDoPayRequest extends BaseRequest<Boolean> {
 
   @Override
   public void validate() {}
+
+  @Override
+  public TypeReference<Boolean> getRespTypeReference() {
+    return new TypeReference<Boolean>(){};
+  }
 }

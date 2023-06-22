@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.model.response.product.ProductYanBao;
@@ -37,5 +38,10 @@ public class QueryProductYanBaoRequest extends BaseRequest<Map<String, ProductYa
     Assert.isNotNull(city, "二级地址编号");
     Assert.isNotNull(county, "三级地址编号");
     Assert.isNotNull(town, "四级地址编号");
+  }
+
+  @Override
+  public TypeReference<Map<String, ProductYanBao>> getRespTypeReference() {
+    return new TypeReference<Map<String, ProductYanBao>>() {};
   }
 }

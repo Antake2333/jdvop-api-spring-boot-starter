@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.OrderCheckCancelBatchResponse;
 import com.orcas.util.Assert;
@@ -25,6 +26,11 @@ public class OrderCheckCancelBatchRequest extends BaseRequest<List<OrderCheckCan
   public void validate() {
     Assert.isNotNull(jdOrderIds, "京东订单号");
     Assert.isTrue(jdOrderIds.size() <= 20, "京东订单号不能超过20个");
+  }
+
+  @Override
+  public TypeReference<List<OrderCheckCancelBatchResponse>> getRespTypeReference() {
+    return new TypeReference<List<OrderCheckCancelBatchResponse>>(){};
   }
 
   @Override

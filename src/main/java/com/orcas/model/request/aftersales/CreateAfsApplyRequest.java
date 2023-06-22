@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.util.Assert;
@@ -303,6 +304,11 @@ public class CreateAfsApplyRequest extends BaseRequest<Void>{
         pickwareInfo.validate();
         returnWareInfo.validate();
         afsApplyInfoItemList.forEach(AfsApplyInfoItem::validate);
+    }
+
+    @Override
+    public TypeReference<Void> getRespTypeReference() {
+        return new TypeReference<Void>(){};
     }
 
     @Override

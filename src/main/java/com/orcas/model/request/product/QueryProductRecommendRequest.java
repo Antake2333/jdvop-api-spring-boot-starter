@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.QueryProductRecommendResponse;
 import com.orcas.util.Assert;
@@ -31,5 +32,10 @@ public class QueryProductRecommendRequest extends BaseRequest<List<QueryProductR
     Assert.isNotNull(limitNum, "一级地址编号");
     Assert.validateIntegerMaxIfPresent(limitNum, "limitNum", BigInteger.valueOf(30L));
     Assert.isNotBlank(area, "二级地址编号");
+  }
+
+  @Override
+  public TypeReference<List<QueryProductRecommendResponse>> getRespTypeReference() {
+    return new TypeReference<List<QueryProductRecommendResponse>>() {};
   }
 }

@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -29,6 +30,11 @@ public class ApplyDetailInfoRequest extends BaseRequest<Void> {
     Assert.isNotNull(orderId, "订单号，即京东子订单号");
     Assert.isNotNull(thirdApplyId, "订单号，即京东子订单号");
     Assert.isNotNull(appendInfoSteps, "获取信息模块");
+  }
+
+  @Override
+  public TypeReference<Void> getRespTypeReference() {
+    return new TypeReference<Void>() {};
   }
 
   @Override

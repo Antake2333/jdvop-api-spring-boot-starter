@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
@@ -37,5 +38,10 @@ public class QueryProductHdfkRequest extends BaseRequest<Boolean> {
     Assert.isNotBlank(city, "二级地址编号");
     Assert.isNotBlank(county, "三级地址编号");
     Assert.isNotBlank(town, "四级地址编号");
+  }
+
+  @Override
+  public TypeReference<Boolean> getRespTypeReference() {
+    return new TypeReference<Boolean>() {};
   }
 }

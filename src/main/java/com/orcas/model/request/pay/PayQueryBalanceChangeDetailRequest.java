@@ -1,5 +1,6 @@
 package com.orcas.model.request.pay;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.pay.PayQueryBalanceChangeDetailResponse;
 import com.orcas.util.Assert;
@@ -44,6 +45,11 @@ public class PayQueryBalanceChangeDetailRequest
     public String orderId;
     public String startDate;
     public String endDate;
+  }
+
+  @Override
+  public TypeReference<PayQueryBalanceChangeDetailResponse> getRespTypeReference() {
+    return new TypeReference<PayQueryBalanceChangeDetailResponse>() {};
   }
 
   @Override

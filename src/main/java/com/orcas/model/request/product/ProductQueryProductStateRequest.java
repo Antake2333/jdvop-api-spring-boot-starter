@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductState;
 import com.orcas.util.Assert;
@@ -21,5 +22,10 @@ public class ProductQueryProductStateRequest extends BaseRequest<List<ProductSta
   @Override
   public void validate() {
     Assert.isNotBlank(sku, "sku");
+  }
+
+  @Override
+  public TypeReference<List<ProductState>> getRespTypeReference() {
+    return new TypeReference<List<ProductState>>(){};
   }
 }

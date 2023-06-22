@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -40,6 +41,11 @@ public class ConfirmAfsOrderRequest extends BaseRequest<Void> {
         Assert.isNotNull(thirdApplyId, "申请批次号，同一子订单下不可重复（长度最大20）");
     }
 
+
+    @Override
+    public TypeReference<Void> getRespTypeReference() {
+        return new TypeReference<Void>(){};
+    }
 
     @Override
     public Object into() {

@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductPoolDetail;
@@ -19,4 +20,9 @@ public class ProductGetPoolCodeRequest extends BaseRequest<List<ProductPoolDetai
 
   @Override
   public void validate() {}
+
+  @Override
+  public TypeReference<List<ProductPoolDetail>> getRespTypeReference() {
+    return new TypeReference<List<ProductPoolDetail>>(){};
+  }
 }

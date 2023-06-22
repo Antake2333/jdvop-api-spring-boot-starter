@@ -1,5 +1,6 @@
 package com.orcas.model.request.pay;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.pay.PayQueryBalanceResponse;
 import com.orcas.util.Assert;
@@ -23,5 +24,10 @@ public class PayQueryBalanceRequest extends BaseRequest<PayQueryBalanceResponse>
   public void validate() {
     Assert.isNotBlank(pin, "京东PIN不能为空");
     Assert.isNotBlank(type, "账户余额类型不能为空");
+  }
+
+  @Override
+  public TypeReference<PayQueryBalanceResponse> getRespTypeReference() {
+    return new TypeReference<PayQueryBalanceResponse>(){};
   }
 }

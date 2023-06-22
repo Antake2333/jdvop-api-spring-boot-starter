@@ -1,5 +1,6 @@
 package com.orcas.model.request.address;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -20,5 +21,10 @@ public class AddressGetThirdRequest extends BaseRequest<HashMap<String, Integer>
   @Override
   public void validate() {
     Assert.isNotNull(id, "二级地址ID");
+  }
+
+  @Override
+  public TypeReference<HashMap<String, Integer>> getRespTypeReference() {
+    return new TypeReference<HashMap<String, Integer>>() {};
   }
 }

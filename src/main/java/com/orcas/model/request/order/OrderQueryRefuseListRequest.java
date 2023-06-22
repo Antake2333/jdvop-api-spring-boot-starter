@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.OrderQueryRefuseListResponse;
 import com.orcas.util.Assert;
@@ -53,6 +54,11 @@ public class OrderQueryRefuseListRequest extends BaseRequest<OrderQueryRefuseLis
     private Integer pageSize = 20;
     private Long jdOrderIdIndex;
     private String endDate;
+  }
+
+  @Override
+  public TypeReference<OrderQueryRefuseListResponse> getRespTypeReference() {
+    return new TypeReference<OrderQueryRefuseListResponse>() {};
   }
 
   @Override

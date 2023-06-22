@@ -1,5 +1,6 @@
 package com.orcas.model.request.messagepush;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -23,6 +24,11 @@ public class MessagePushDeleteRequest extends BaseRequest<Boolean> {
   @Override
   public void validate() {
     Assert.isNotNull(messageIds, "消息ID列表");
+  }
+
+  @Override
+  public TypeReference<Boolean> getRespTypeReference() {
+    return new TypeReference<Boolean>() {};
   }
 
   @Override

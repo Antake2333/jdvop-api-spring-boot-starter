@@ -1,6 +1,7 @@
 package com.orcas.model.request.product;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
 import com.orcas.model.response.product.ProductSaleStateAndStockCheckResponse;
@@ -48,6 +49,11 @@ public class ProductSaleStateAndStockCheckRequest
     private String skuNums;
     /** 格式：13_1000_4277_0 (分别代表1、2、3、4级地址) */
     private String area;
+  }
+
+  @Override
+  public TypeReference<List<ProductSaleStateAndStockCheckResponse>> getRespTypeReference() {
+    return  new TypeReference<List<ProductSaleStateAndStockCheckResponse>>(){};
   }
 
   @Override

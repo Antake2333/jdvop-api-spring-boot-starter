@@ -1,6 +1,7 @@
 package com.orcas.model.request.product;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
 import com.orcas.model.response.product.QueryProductStockResponse;
@@ -40,6 +41,11 @@ public class QueryProductStockRequest extends BaseRequest<List<QueryProductStock
     private String area;
     /** 商品和数量 [{skuId: 569172,num:101}]。 “{skuId: 569172,num:10}”为1条记录，此参数最多传入100条记录。 */
     private String skuNums;
+  }
+
+  @Override
+  public TypeReference<List<QueryProductStockResponse>> getRespTypeReference() {
+    return new TypeReference<List<QueryProductStockResponse>>() {};
   }
 
   @Override

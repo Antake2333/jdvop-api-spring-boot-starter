@@ -1,5 +1,6 @@
 package com.orcas.model.request.address;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.address.CheckAreaResponse;
 import com.orcas.util.Assert;
@@ -30,5 +31,10 @@ public class CheckAreaRequest extends BaseRequest<CheckAreaResponse> {
     Assert.isNotNull(cityId, "二级地址ID");
     Assert.isNotNull(countyId, "三级地址ID");
     Assert.isNotNull(townId, "四级地址ID");
+  }
+
+  @Override
+  public TypeReference<CheckAreaResponse> getRespTypeReference() {
+    return new TypeReference<CheckAreaResponse>(){};
   }
 }

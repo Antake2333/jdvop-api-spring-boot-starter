@@ -1,6 +1,7 @@
 package com.orcas.model.request.aftersales;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.util.Assert;
@@ -22,6 +23,11 @@ public class QuerySummaryRequest extends BaseRequest<JSONObject> {
   private Param param;
   /** canCancel//申请单是否可取消售后 canConfirm //申请单是否可以确认 canSendSku//申请单是否可以填写发运信息 */
   private String queryExts;
+
+  @Override
+  public TypeReference<JSONObject> getRespTypeReference() {
+    return new TypeReference<JSONObject>() {};
+  }
 
   @Data
   public static class Param implements Serializable, IValidate {

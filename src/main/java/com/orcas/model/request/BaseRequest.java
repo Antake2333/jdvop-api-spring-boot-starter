@@ -1,5 +1,6 @@
 package com.orcas.model.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.enums.ApiEnum;
 import com.orcas.model.request.api.ApiRequest;
 import com.orcas.util.Assert;
@@ -13,7 +14,13 @@ import java.io.Serializable;
 @Data
 public abstract class BaseRequest<R> implements Serializable, IValidate {
   public static final Long SERIAL_VERSION_UID = 1L;
-  private Class<R> responseClass;
+
+  /**
+   * 获取返回值类型
+   *
+   * @return
+   */
+  public abstract TypeReference<R> getRespTypeReference();
 
   /**
    * 转换成JD要的参数,可能向外提供的参数是自己的,传递给JD需要转换一下,需要重写一下该方法

@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.QueryProductCodeFromPoolResponse;
 import com.orcas.util.Assert;
@@ -29,5 +30,10 @@ public class QueryProductCodeFromPoolRequest extends BaseRequest<QueryProductCod
     Assert.isNotBlank(pageNum, "商品池编码");
     Assert.validateIntegerMaxIfPresent(pageSize, "每页大小", BigInteger.valueOf(1000L));
     Assert.isNotNull(offset, "偏移量");
+  }
+
+  @Override
+  public TypeReference<QueryProductCodeFromPoolResponse> getRespTypeReference() {
+    return new TypeReference<QueryProductCodeFromPoolResponse>(){};
   }
 }

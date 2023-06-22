@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductPageSearchResponse;
@@ -62,4 +63,9 @@ public class ProductPageSearchRequest extends BaseRequest<ProductPageSearchRespo
 
   @Override
   public void validate() {}
+
+  @Override
+  public TypeReference<ProductPageSearchResponse> getRespTypeReference() {
+    return new TypeReference<ProductPageSearchResponse>(){};
+  }
 }

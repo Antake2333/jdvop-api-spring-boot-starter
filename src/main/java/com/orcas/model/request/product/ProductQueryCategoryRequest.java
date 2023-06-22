@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.Category;
 import com.orcas.util.Assert;
@@ -19,5 +20,10 @@ public class ProductQueryCategoryRequest extends BaseRequest<Category> {
   @Override
   public void validate() {
     Assert.isNotNull(cid, "分类id");
+  }
+
+  @Override
+  public TypeReference<Category> getRespTypeReference() {
+    return new TypeReference<Category>(){};
   }
 }

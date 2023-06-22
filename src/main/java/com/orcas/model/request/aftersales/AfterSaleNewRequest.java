@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.aftersales.AfterSaleNewResponse;
 import com.orcas.util.Assert;
@@ -63,6 +64,11 @@ public class AfterSaleNewRequest extends BaseRequest<AfterSaleNewResponse> {
     @Override
     public void validate() {
         Assert.isNotNull(orderId, "订单号，即京东子订单号");
+    }
+
+    @Override
+    public TypeReference<AfterSaleNewResponse> getRespTypeReference() {
+        return new TypeReference<AfterSaleNewResponse>() {};
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -18,5 +19,10 @@ public class OrderQueryByThirdOrderRequest extends BaseRequest<String> {
   @Override
   public void validate() {
     Assert.isNotBlank(thirdOrder, "第三方订单号（非京东订单号）");
+  }
+
+  @Override
+  public TypeReference<String> getRespTypeReference() {
+    return new TypeReference<String>(){};
   }
 }

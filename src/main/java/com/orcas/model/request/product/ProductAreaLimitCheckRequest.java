@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductAreaLimit;
 import com.orcas.util.Assert;
@@ -35,5 +36,10 @@ public class ProductAreaLimitCheckRequest extends BaseRequest<List<ProductAreaLi
     Assert.isNotBlank(city, "二级地址编号");
     Assert.isNotBlank(county, "三级地址编号");
     Assert.isNotBlank(town, "四级地址编号");
+  }
+
+  @Override
+  public TypeReference<List<ProductAreaLimit>> getRespTypeReference() {
+    return new TypeReference<List<ProductAreaLimit>>(){};
   }
 }

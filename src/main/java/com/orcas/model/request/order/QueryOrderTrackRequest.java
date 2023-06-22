@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.QueryOrderTrackResponse;
 import com.orcas.util.Assert;
@@ -25,5 +26,10 @@ public class QueryOrderTrackRequest extends BaseRequest<QueryOrderTrackResponse>
   @Override
   public void validate() {
     Assert.isNotBlank(jdOrderId, "京东订单号");
+  }
+
+  @Override
+  public TypeReference<QueryOrderTrackResponse> getRespTypeReference() {
+    return new TypeReference<QueryOrderTrackResponse>() {};
   }
 }

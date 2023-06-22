@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.request.IValidate;
 import com.orcas.util.Assert;
@@ -91,6 +92,12 @@ public class SaleSendInfoRequest extends BaseRequest<Void> {
             Assert.isNotNull(wareType, "商品类型。10主商品，20赠品。");
             Assert.isNotNull(wareNum, "商品数量");
         }
+    }
+
+    @Override
+    public TypeReference<Void> getRespTypeReference() {
+        return new TypeReference<Void>() {
+        };
     }
 
     @Override

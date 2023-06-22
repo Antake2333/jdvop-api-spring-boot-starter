@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductDetailImage;
 import com.orcas.util.Assert;
@@ -22,5 +23,10 @@ public class ProductQueryProductImageRequest extends BaseRequest<Map<String, Lis
   @Override
   public void validate() {
     Assert.isNotBlank(sku, "sku");
+  }
+
+  @Override
+  public TypeReference<Map<String, List<ProductDetailImage>>> getRespTypeReference() {
+    return new TypeReference<Map<String, List<ProductDetailImage>>>(){};
   }
 }

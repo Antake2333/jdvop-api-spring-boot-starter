@@ -1,6 +1,7 @@
 package com.orcas.model.request.order;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.common.SkuNum;
@@ -69,6 +70,11 @@ public class QueryOrderFreightRequest extends BaseRequest<QueryOrderFreightRespo
     /** conFreight //续重运费 */
     @JSONField(name = "queryExts")
     private String params;
+  }
+
+  @Override
+  public TypeReference<QueryOrderFreightResponse> getRespTypeReference() {
+    return new TypeReference<QueryOrderFreightResponse>() {};
   }
 
   @Override

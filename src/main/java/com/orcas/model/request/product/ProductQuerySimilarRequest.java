@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductSimilar;
 import com.orcas.util.Assert;
@@ -21,5 +22,10 @@ public class ProductQuerySimilarRequest extends BaseRequest<List<ProductSimilar>
   @Override
   public void validate() {
     Assert.isNotNull(skuId, "商品编码");
+  }
+
+  @Override
+  public TypeReference<List<ProductSimilar>> getRespTypeReference() {
+    return new TypeReference<List<ProductSimilar>>(){};
   }
 }

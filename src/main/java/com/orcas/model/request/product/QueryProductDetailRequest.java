@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductDetail;
@@ -35,5 +36,10 @@ public class QueryProductDetailRequest extends BaseRequest<ProductDetail> {
   @Override
   public void validate() {
     Assert.isNotBlank(sku, "商品编号");
+  }
+
+  @Override
+  public TypeReference<ProductDetail> getRespTypeReference() {
+    return new TypeReference<ProductDetail>() {};
   }
 }

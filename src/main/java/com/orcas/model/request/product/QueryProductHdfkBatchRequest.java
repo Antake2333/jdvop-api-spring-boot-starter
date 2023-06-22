@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductHdfk;
@@ -45,5 +46,10 @@ public class QueryProductHdfkBatchRequest extends BaseRequest<Map<String, Produc
     Assert.isNotBlank(city, "二级地址编号");
     Assert.isNotBlank(county, "三级地址编号");
     Assert.isNotBlank(town, "四级地址编号");
+  }
+
+  @Override
+  public TypeReference<Map<String, ProductHdfk>> getRespTypeReference() {
+    return new TypeReference<Map<String, ProductHdfk>>() {};
   }
 }

@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.order.ConfirmInfo;
 import com.orcas.util.Assert;
@@ -25,6 +26,11 @@ public class OrderConfirmReceivedBatchRequest extends BaseRequest<List<ConfirmIn
   public void validate() {
     Assert.isNotNull(jdOrderIds, "京东的订单单号");
     Assert.isTrue(jdOrderIds.size() <= 50, "京东的订单单号不能超过50个");
+  }
+
+  @Override
+  public TypeReference<List<ConfirmInfo>> getRespTypeReference() {
+    return new TypeReference<List<ConfirmInfo>>(){};
   }
 
   @Override

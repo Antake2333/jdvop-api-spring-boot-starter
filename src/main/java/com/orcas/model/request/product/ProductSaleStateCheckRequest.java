@@ -1,5 +1,6 @@
 package com.orcas.model.request.product;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.model.response.product.ProductSaleState;
@@ -31,5 +32,10 @@ public class ProductSaleStateCheckRequest extends BaseRequest<List<ProductSaleSt
   public void validate() {
     Assert.isNotBlank(skuIds, "商品编号");
     Assert.isNotBlank(params, "扩展参数");
+  }
+
+  @Override
+  public TypeReference<List<ProductSaleState>> getRespTypeReference() {
+    return new TypeReference<List<ProductSaleState>>() {};
   }
 }

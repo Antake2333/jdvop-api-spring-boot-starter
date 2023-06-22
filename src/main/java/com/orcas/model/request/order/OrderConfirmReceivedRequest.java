@@ -1,5 +1,6 @@
 package com.orcas.model.request.order;
 
+import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
 import com.orcas.util.Assert;
 import lombok.*;
@@ -19,5 +20,10 @@ public class OrderConfirmReceivedRequest extends BaseRequest<Void> {
   @Override
   public void validate() {
     Assert.isNotNull(jdOrderId, "京东的订单单号");
+  }
+
+  @Override
+  public TypeReference<Void> getRespTypeReference() {
+    return new TypeReference<Void>(){};
   }
 }
