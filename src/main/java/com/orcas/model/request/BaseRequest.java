@@ -1,6 +1,7 @@
 package com.orcas.model.request;
 
 import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.orcas.enums.ApiEnum;
 import com.orcas.model.request.api.ApiRequest;
 import com.orcas.util.Assert;
@@ -20,6 +21,7 @@ public abstract class BaseRequest<R> implements Serializable, IValidate {
    *
    * @return
    */
+  @JSONField(serialize = false)
   public abstract TypeReference<R> getRespTypeReference();
 
   /**
