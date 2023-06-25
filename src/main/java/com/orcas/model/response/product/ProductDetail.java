@@ -206,8 +206,8 @@ public class ProductDetail implements Serializable {
   @JSONField(name = "Screenwriter")
   private String screenwriter;
   /** 配音语言 */
-  @JSONField(name = "languageDubbed")
-  private String Language_Dubbed;
+  @JSONField(name = "Language_Dubbed")
+  private String languageDubbed;
 
   private String manual;
   /** 片长 */
@@ -219,4 +219,108 @@ public class ProductDetail implements Serializable {
   /** 上映日期 */
   @JSONField(name = "ReleaseDate")
   private String releaseDate;
+  // 额外附加参数里面的值
+  /**
+   * 移动端商品详情大字段
+   */
+  private String nappintroduction;
+  /**
+   * PC端商品详情大字段
+   */
+  private String nintroduction;
+  /**
+   * 微信小程序商品详情大字段，仅提供图片地址，需要客户添加显示逻辑
+   */
+  private String wxintroduction;
+  /**
+   * 获取客户侧分类编号，需要京东运营维护京东SKU与客户分类编号的映射
+   */
+  private String contractSkuExt;
+  /**
+   * 是否厂直商品
+   */
+  private String isFactoryShip;
+  /**
+   * 是否节能环保商品
+   */
+  private String isEnergySaving;
+  /**
+   * 京东侧税收分类编码
+   */
+  private String taxCode;
+
+  /**
+   * 商品最低起购量
+   */
+  @JSONField(name = "LowestBuy")
+  private String lowestBuy;
+
+  /**
+   * 容量单位转换（例如：油品单位桶转升)
+   */
+  private String capacity;
+  /**
+   * 京东侧模拟SPU号
+   */
+  private String spuId;
+  /**
+   * SPU名称
+   */
+  private String pName;
+  /**
+   * 是否京东配送
+   */
+  @JSONField(name = "isJDLogistics")
+  private String isJdLogistics;
+  /**
+   * 商品税率
+   */
+  private String taxInfo;
+
+  /**
+   * 中国法分类（仅限图书商品使用）
+   */
+  @JSONField(name = "ChinaCatalog")
+  private String chinaCatalog;
+
+  /**
+   * 商品池扩展字段
+   */
+  private String contractSkuPoolExt;
+  /**
+   * 规格参数
+   */
+  private String seoModel;
+  /**
+   * 获取结构化商品属性数据(同京东官网样式)
+   */
+  private String paramDetailJson;
+  /**
+   * 转商详接口出参param为json格式(只解析原出参param)
+   */
+  private String paramJson;
+  /**
+   * 质保信息
+   */
+  private String wserve;
+  /**
+   * 是否自营
+   */
+  private String isSelf;
+  /**
+   * 商品介绍
+   */
+  private String categoryAttrs;
+  /**
+   * 颜色：color，尺码：size
+   */
+  private String saleAttr;
+  /**
+   * 尺寸描述：长：length、宽：width、高：height
+   */
+  private String sizeDesc;
+  /**
+   * 商品最大预占天数
+   */
+  private String preDays;
 }
