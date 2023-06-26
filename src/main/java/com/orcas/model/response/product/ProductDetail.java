@@ -323,4 +323,8 @@ public class ProductDetail implements Serializable {
    * 商品最大预占天数
    */
   private String preDays;
+  /**
+   * upc码
+   */
+  private String upc;
 }
