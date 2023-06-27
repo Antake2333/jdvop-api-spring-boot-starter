@@ -79,4 +79,16 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>thirdparty</id>
+            <name>thirdparty</name>
+            <url>http://148.70.163.47:8081/repository/thirdparty/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>http://148.70.163.47:8081/repositories/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
