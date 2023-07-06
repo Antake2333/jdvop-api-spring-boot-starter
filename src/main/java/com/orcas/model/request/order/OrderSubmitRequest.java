@@ -10,6 +10,7 @@ import lombok.*;
 import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -307,6 +308,7 @@ public class OrderSubmitRequest extends BaseRequest<OrderSubmitResponse> {
   public static class OrderSkuNum extends SkuNum implements Serializable {
     public static final Long SERIAL_VERSION_UID = 1L;
     private Boolean bNeedGift;
+    private BigDecimal price;
     private List<OrderYanBao> yanbao;
   }
 
