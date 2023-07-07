@@ -49,6 +49,7 @@ public enum ApiEnum {
   ORDER_CONFIRM("api/order/confirmOrder", OrderConfirmRequest.class, "确认订单"),
   ORDER_CHECK_CANCEL_BATCH("api/order/batchCheckCancel", OrderCheckCancelBatchRequest.class, "批量查询订单是否可取消"),
   ORDER_CANCEL("api/order/cancel", OrderCancelRequest.class, "取消订单"),
+  ORDER_QUERY_ORDER_DETAIL("api/order/selectJdOrder", QueryOrderDetailRequest.class, "查询订单详情"),
   ORDER_QUERY_PORDER_DETAIL("api/order/selectJdOrder", QueryPOrderDetailRequest.class, "查询父订单详情"),
   ORDER_QUERY_CORDER_DETAIL("api/order/selectJdOrder", QueryCOrderDetailRequest.class, "查询子订单详情"),
   ORDER_QUERY_TRACK("api/order/orderTrack", QueryOrderTrackRequest.class, "查询订单配送信息"),
