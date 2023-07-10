@@ -185,9 +185,9 @@ public class OrderSubmitRequest extends BaseRequest<OrderSubmitResponse> {
       Assert.isNotBlank(invoiceAddress, "增专票收票人所在地址");
     }
     Assert.hasTxtIfPresent(poNo, "采购单号", 1, 26);
+    Assert.isNotBlank(regCompanyName, "专票资质公司名称");
+    Assert.isNotBlank(regCode, "专票资质纳税人识别号");
     if (Objects.nonNull(selectedInvoiceTitle) && selectedInvoiceTitle == 5) {
-      Assert.isNotBlank(regCompanyName, "专票资质公司名称");
-      Assert.isNotBlank(regCode, "专票资质纳税人识别号");
       Assert.isNotBlank(companyName, "发票抬头");
       Assert.isTrue(companyName.equals(regCompanyName), "发票抬头必须和专票资质公司名称一致");
     }
