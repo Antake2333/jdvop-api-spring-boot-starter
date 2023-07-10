@@ -307,6 +307,7 @@ public class OrderSubmitRequest extends BaseRequest<OrderSubmitResponse> {
   @Data
   public static class OrderSkuNum extends SkuNum implements Serializable {
     public static final Long SERIAL_VERSION_UID = 1L;
+    private String skuId;
     private Boolean bNeedGift;
     private BigDecimal price;
     private List<OrderYanBao> yanbao;
