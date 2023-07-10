@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class SkuNum implements Serializable {
   public static final long serialVersionUID = 1L;
-  private Long skuId;
+  private String skuId;
   private Long num;
   private BigDecimal price;
 }
