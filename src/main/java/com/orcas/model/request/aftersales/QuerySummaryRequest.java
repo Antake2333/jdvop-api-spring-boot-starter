@@ -1,5 +1,6 @@
 package com.orcas.model.request.aftersales;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.orcas.model.request.BaseRequest;
@@ -9,6 +10,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.HashMap;
 
 /**
  * TODO 这里返回值有疑问,文档里面太乱了
@@ -63,5 +65,15 @@ public class QuerySummaryRequest extends BaseRequest<JSONObject> {
   public void validate() {
     Assert.isNotNull(param, "param");
     param.validate();
+  }
+
+  @Override
+  public Object into() {
+    return new HashMap<String, String>(2) {
+      {
+        put("param", JSON.toJSONString(QuerySummaryRequest.this.getParam()));
+        put("queryExts", QuerySummaryRequest.this.getQueryExts());
+      }
+    };
   }
 }
